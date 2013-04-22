@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/my.css" />
+        
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/messages_es.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/phone.js"></script>
+        <script type="text/javascript" src="js/default.js"></script>
+        <script type="text/javascript" src="js/my.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+        <script type="text/javascript" src="cordova.js" charset="utf-8"></script>
+        <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+        <script>
+            document.addEventListener("deviceready",onDeviceReady,false);
+
+            $(document).bind( 'mobileinit', function()
+            {
+                $.support.cors = true;
+                $.mobile.allowCrossDomainPages = true;
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+            });
+            
+            var pictureSource;   // picture source
+            var destinationType; // sets the format of returned value
+            var version = "versión: 1.1.1a";
+            
+            function onDeviceReady() 
+            {
+                pictureSource=navigator.camera.PictureSourceType;
+                destinationType=navigator.camera.DestinationType;
+
+                //Desabilita el botón back dek dispositivo
+                document.addEventListener("backbutton", backKeyDown, true);
+            }
+
+            //Cierra la aplicación cuando se presiona el botón back.
+            function backKeyDown() 
+            {
+                //jQuery(document).empty();
+                sessionStorage.clear();
+                $.mobile.changePage($('#page1'),{transition:'none'});
+                
+            }
+        </script>
+    </head>
+    <body>
+        <!-- autenticacion -->
+        <div data-role="page" data-theme="b" id="page1">
+            <div data-theme="b" data-role="header" style='text-align: center;'>
+                <img src="img/logo_header.png" alt="image" />
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <form action="" id="form-login" autocomplete="off">
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="textinput1">
+                                Usuario
+                            </label>
+                            <input name="usuario" id="textinput1" placeholder="usuario" value="" type="text" />
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="textinput2">
+                                Clave
+                            </label>
+                            <input name="clave" id="textinput2" placeholder="clave" value="" type="password" />
+                        </fieldset>
+                    </div>
+                    <div>
+                        <a href="#page25" data-transition="none">
+                            recuperar clave
+                        </a>
+                    </div>
+                    <input value="Ingresar" type="submit" data-role="button" data-theme="b" id="btn-login"/>
+                </form>
+                <span id="version">versión 0.1</span>
+            </div>
+            <div data-theme="b" data-role="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a rel="external" href="codes.html" data-theme="" data-icon="info">
+                                Status: Diccionario
+                            </a>
+                        </li>
+                        <li>
+                            <a rel="external" href="metricas.html" data-theme="" data-icon="grid">
+                                Análisis de Métricas
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- recuperar clave -->
+        <div data-role="page" data-theme="b" id="page25">
+            <div data-theme="b" data-role="header">
+                <h3>
+                    DocBase
+                </h3>
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page25" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <h2>
+                    Recuperar clave
+                </h2>
+                <div>
+                    <p>
+                        <b>
+                            Digite su número de identificación para inciar el proceso de recuperación
+                            de la contraseña.
+                        </b>
+                    </p>
+                </div>
+                <form action="" id="form-recovery" autocomplete="off">
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="textinput3">
+                            </label>
+                            <input name="login" id="textinput3" placeholder="usuario" value="" type="text" />
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="textinput17">
+                            </label>
+                            <input name="documentoUsuario" id="textinput17" placeholder="Contraseña" value="" type="password" />
+                        </fieldset>
+                    </div>
+                    <a data-role="button" data-transition="none" data-theme="b" href="" id="btn-recovery">
+                        Enviar
+                    </a>
+                </form>
+            </div>
+        </div>
+        
+        <!-- menu -->
+        <div data-role="page" data-theme="b" id="page3" class="loading">
+            <div data-theme="b" data-role="header">
+                <h3>Menú</h3>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-theme="c" id="menu1">
+                        <a href="#" data-transition="none" >
+                            Gestionar Servicios
+                            <span class="ui-li-count" id="num-servicios">
+                            </span>
+                        </a>
+                    </li>
+                    <li data-theme="c" id="menu2">
+                        <a href="#page15" data-transition="none">
+                            Novedad General
+                        </a>
+                    </li>
+                    <!--li data-theme="c" id="menu3">
+                        <a href="#page33" data-transition="none">
+                            Acciones sin Cerrar
+                            <span class="ui-li-count">
+                                0
+                            </span>
+                        </a>
+                    </li-->
+                    <li data-theme="c" id="menu4">
+                        <a href="#page26" data-transition="none">
+                            Asignación de servicios
+                        </a>
+                    </li>
+                    <li data-theme="c" id="menu5">
+                        <a href="https://safetransfer.diebold.com/" data-transition="none">
+                            Documentación técnica
+                        </a>
+                    </li>
+                    <li data-theme="c" id="menu6">
+                        <a href="#" data-transition="none">
+                            Mensajes sin leer
+                            <span class="ui-li-count" id='cantidad-mensajes'>
+                                0
+                            </span>
+                        </a>
+                    </li>
+                    <li data-theme="c" id="menu7">
+                         <a class="cerrar-sesion" class="cerrar-sesion" href="#" data-theme="" data-icon="delete">Cerrar Sesión</a>
+                    </li>
+                </ul>
+                <span class='busqueda'></span>
+            </div>
+        </div>
+
+        <!-- gestionar servicios -->
+        <div data-role="page" data-theme="b" id="page7" class="loading">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page3" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    volver
+                </a>
+                <h3>
+                    Gestionar servicio
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">home</a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+
+            </div>
+        </div>
+       
+        <!-- acciones de Servicio -->
+        <div data-role="page" data-theme="b" id="page5">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page7" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    volver
+                </a>
+                <h3>
+                    Acciones
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">home</a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <h4 id="num_ticket"></h4>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true" id="list-service">
+                    <li data-role="list-divider" role="heading">
+                        Apertura del caso
+                    </li>
+                    <li data-theme="c" id="datos-servicio">
+                        <a href="#page10" data-transition="none">
+                            Datos del servicio
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page11" data-transition="none" id="acepta-transito">
+                            [Aceptar/En Tránsito]
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page8" data-transition="none">
+                            Abrir
+                        </a>
+                    </li>
+                    <li data-role="list-divider" role="heading">
+                        Cierre
+                    </li>
+                    <li data-theme="c" id="cierre-ticket">
+                        <a href="#page12" data-transition="none">
+                            Tareas
+                            <span class="ui-li-count" id="num-modules"></span>
+                        </a>
+                    </li>
+                    <li data-theme="c" id="check-list">
+                        <a href="#page32" data-transition="none">
+                            Check List
+                        </a>
+                    </li>
+                    <li data-theme="c" id="reporte-ticket">
+                        <a href="#page9" data-transition="none">
+                            Reporte de servicio
+                        </a>
+                    </li>
+                    <li data-role="list-divider" role="heading">
+                        Partes
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page16" data-transition="none">
+                            Solicitar partes
+                        </a>
+                    </li>
+                    <li data-theme="c" id="gestion-partes">
+                        <a href="#page41" data-transition="none">
+                            Gestión de partes
+                        </a>
+                    </li>
+                    <li data-role="list-divider" role="heading">
+                        General
+                    </li>
+                    <li data-theme="c" id="novedades">
+                        <a href="#page15" data-transition="none">
+                            Novedades
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page20" data-transition="none">
+                            Solicitar Historial
+                        </a>
+                    </li>
+                    <li data-theme="c" id="statux-xms">
+                        <a href="#page21" data-transition="none">
+                            Status XMS
+                        </a>
+                    </li>
+                    <li data-theme="c" id="seguimiento-actividades">
+                        <a href="#page22" data-transition="none">
+                            Seguimiento Actividades
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page24" data-transition="none">
+                            Tools
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page42" data-transition="none">
+                            Mensajeria
+                        </a>
+                    </li>
+                    <!--<li data-theme="c">
+                        <a href="#page20" data-transition="none">
+                            HV del Equipo
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        
+        <!-- datos del Servicio -->
+        <div data-role="page" data-theme="b" id="page10" class="loading">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Datos del Servicio
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <a class="recargar-mapa" data-inline="true" href="#" data-role="button" data-icon="refresh" data-iconpos="left">Recargar mapa</a>
+                <div class='body-content'></div>
+                <div id="map_canvas"></div>
+            </div>
+        </div>
+        
+        <!-- aceptar servicio -->
+        <div data-role="page" data-theme="b" id="page11">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page11" data-icon="back" data-iconpos="notext" class="ui-btn-left">Volver</a>
+                <h3>Aceptar Servicio</h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">home</a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <div class='body-content'>
+                    <h3>El servicio esta siendo procesado.</h3>
+                </div>
+            </div>
+        </div>
+        
+        <!-- transito servicio -->
+        <div data-role="page" data-theme="b" id="page45">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Transito Servicio
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <div class='body-content'>
+                    <h3>El servicio esta siendo procesado.</h3>
+                </div>
+            </div>
+        </div>
+        
+        <!-- abrir Caso -->
+        <div data-role="page" data-theme="b" id="page8">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-icon="back" data-iconpos="notext" class="ui-btn-left" id="btn-page8-back">
+                    Volver
+                </a>
+                <h3>Abrir servicio</h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">home</a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <form action="" id="form-open-case" autocomplete="off">
+                    <div class="titulo-reporte-servicio"></div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="toggleswitch2">Tipo</label>
+                            <select name="online" id="toggleswitch2" data-theme="b" data-role="slider">
+                                 <option value="true">
+                                    Online
+                                </option>
+                                <option value="false">
+                                    Offline
+                                </option>
+                            </select>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain" class="fecha-hora-abrir">
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <label for="abrir-mes">
+                                Mes
+                            </label>
+                            <select name="fecha" id="abrir-mes">
+                                <option value='01'>Ene</option>
+                                <option value='02'>Feb</option>
+                                <option value='03'>Mar</option>
+                                <option value='04'>Abr</option>
+                                <option value='05'>May</option>
+                                <option value='06'>Jun</option>
+                                <option value='07'>Jul</option>
+                                <option value='08'>Ago</option>
+                                <option value='09'>Sep</option>
+                                <option value='10'>Oct</option>
+                                <option value='11'>Nov</option>
+                                <option value='12'>Dic</option>
+                            </select>
+                            <label for="abrir-dia">
+                                Día
+                            </label>
+                            <select name="fecha" id="abrir-dia">
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                                <option>04</option>
+                                <option>05</option>
+                                <option>06</option>
+                                <option>07</option>
+                                <option>08</option>
+                                <option>09</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                                <option>24</option>
+                                <option>25</option>
+                                <option>26</option>
+                                <option>27</option>
+                                <option>28</option>
+                                <option>29</option>
+                                <option>30</option>
+                                <option>31</option>
+                            </select>
+                            <label for="abrir-ano">
+                                Año
+                            </label>
+                            <select name="fecha" class='fecha-ano'id="abrir-ano">
+                            </select>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain" class="fecha-hora-abrir">
+                        <fieldset data-role="controlgroup">
+                            <label for="textinput7">Hora (Formato 24 Horas)</label>
+                            <!-- <input name="hora" id="textinput7" placeholder="hh/mm" type="time"/> -->
+                            <input name="hora" id="textinput7"/>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <label for="textinput8">
+                                Tiempo de viaje (en minutos)
+                            </label>
+                            <input name="tiempoViaje" id="textinput8" placeholder="minutos"  value="" type="number" data-highlight="true" />
+                       </fieldset>
+                    </div>
+                    <input type="button" data-transition="none" id="btn-open-case" value="Enviar"
+                    />
+                </form>
+            </div>
+        </div>
+        
+        <!-- &gt; vista previa -->
+        <div data-role="page" data-theme="b" id="page28">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-icon="back" data-iconpos="notext" class="ui-btn-left" id="btn-page28-back">
+                    Volver
+                </a>
+                <h3>Vista Previa</h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none" class="canvas-delete">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div id="idpreview">
+
+                </div>
+                <div>
+                    <p>
+                        <b>Firma de Cliente</b>
+                        <button id="clear-canvas" data-inline="true" data-mini="true">Limpiar firma</button>
+                    </p>
+                </div>
+                <div style="width: 288px; height: 100px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;" class="content-canvas">
+                    <canvas id="signaturePanel" width="288" height="100">no canvas support</canvas>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <input name="copia" id="checkbox-copia" type="checkbox" />
+                        <label for="checkbox-copia">Enviar Copia </label>
+                    </fieldset>
+                </div>
+                <input type="button" data-transition="none" data-icon="check" data-iconpos="left" id="btn-send-close" value="Enviar" />
+            </div>
+        </div>
+        
+        <!-- reporte de servicio -->
+        <div data-role="page" data-theme="b" id="page9">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-icon="back" data-iconpos="notext" class="ui-btn-left" id="btn-page9-back">
+                    Volver
+                </a>
+                <h3>
+                    Reporte Servicio
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <form name="reporte_form" id="form-cierra-ticket" action="javascript:submitPreview(document.forms.reporte_form);" method="post" class="validate" autocomplete="off">
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="toggleswitch3">
+                            Tipo
+                        </label>
+                        <select name="cierreonline" id="toggleswitch3" data-theme="b" data-role="slider">
+                            <option value="alex-online">
+                                Online
+                            </option>
+                            <option value="andres-offline">
+                                Offline
+                            </option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain" class="fecha-hora-reporte">
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <label for="reporte-mes">
+                                Mes
+                            </label>
+                            <select name="fecha" id="reporte-mes">
+                                <option value='01'>Ene</option>
+                                <option value='02'>Feb</option>
+                                <option value='03'>Mar</option>
+                                <option value='04'>Abr</option>
+                                <option value='05'>May</option>
+                                <option value='06'>Jun</option>
+                                <option value='07'>Jul</option>
+                                <option value='08'>Ago</option>
+                                <option value='09'>Sep</option>
+                                <option value='10'>Oct</option>
+                                <option value='11'>Nov</option>
+                                <option value='12'>Dic</option>
+                            </select>
+                            <label for="reporte-dia">
+                                Día
+                            </label>
+                            <select name="fecha" id="reporte-dia">
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                                <option>04</option>
+                                <option>05</option>
+                                <option>06</option>
+                                <option>07</option>
+                                <option>08</option>
+                                <option>09</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                                <option>24</option>
+                                <option>25</option>
+                                <option>26</option>
+                                <option>27</option>
+                                <option>28</option>
+                                <option>29</option>
+                                <option>30</option>
+                                <option>31</option>
+                            </select>
+                            <label for="reporte-ano">
+                                Año
+                            </label>
+                            <select name="fecha" class='fecha-ano' id="reporte-ano">
+                            </select>
+                        </fieldset>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain" class="fecha-hora-reporte">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput10">Hora (Formato 24 Horas)</label>
+                        <!--<input name="hora" id="textinput10" placeholder="hh:mm" type="time"/>-->
+                        <input name="hora" id="textinput10"/>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput11">
+                            Espera de sistema (en minutos)
+                        </label>
+                        <input name="tiempoEsperaSistema" id="textinput11" placeholder="minutos" value="" type="number" value="0" data-highlight="true" class="required"/>
+                    </fieldset>
+                </div>
+                <h4>
+                    Voltajes
+                </h4>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput25">
+                            FN
+                        </label>
+                        <input name="faseNeutro" id="textinput25" placeholder="" value="" type="number" class="required"/>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput26">
+                            FT
+                        </label>
+                        <input name="faseTierra" id="textinput26" placeholder="" value="" type="number" class="required"/>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput31">
+                            NT
+                        </label>
+                        <input name="neutro" id="textinput31" placeholder="" value="" type="number" class="required"/>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput32">
+                            Número de transacciones
+                        </label>
+                        <input name="transacciones" id="textinput32" placeholder="" value="" type="number" class="required"/>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput19">
+                            Contacto en sitio
+                        </label>
+                        <input name="nombreContacto" id="textinput19" placeholder="" value="" type="text" class="required"/>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="id-email">
+                            Correo electrónico
+                        </label>
+                        <input name="correoContacto" id="id-email" placeholder="" value="" type="email" class="required"/>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput21">
+                            Teléfono:
+                        </label>
+                        <input name="telefonoContacto" id="textinput21" placeholder="" value="" type="tel" class="required"/>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textarea2">
+                            Comentarios generales
+                        </label>
+                        <textarea name="comentarios" id="textarea2"></textarea>
+                    </fieldset>
+                </div>
+
+                <input type="hidden" name="online" value="" />
+
+                <input type="submit" value="Vista Previa" id="btn-preview">
+                <!--a data-role="button" data-transition="none" href="" id="btn-preview">
+                    Vista Previa
+                </a-->
+            </form>
+            </div>
+        </div>
+        
+        <!-- check List -->
+        <div data-role="page" data-theme="b" id="page32">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-icon="back" data-iconpos="notext" class="ui-btn-left" id="btn-page32-back">
+                    Volver
+                </a>
+                <h3>
+                    Check List
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <div class='body-content'></div>
+            </div>
+        </div>
+        
+        <!-- cerrar tareas -->
+        <div data-role="page" data-theme="b" id="page12" class="loading">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-icon="back" data-iconpos="notext" class="ui-btn-left" id="btn-page12-back">
+                    Volver
+                </a>
+                <h3>
+                    Cerrar Tareas
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">home</a>
+            </div>
+
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <div data-role="collapsible-set" data-theme="" data-content-theme="" >
+                </div>
+                <div class="agregar-modulo">
+                        <input data-role="button" data-transition="none" href="" id="btn-add-module" value="Agregar Módulo" type="button">
+                    <div data-role="fieldcontain" class="agregar-modulo-menu">
+                    </div>
+                </div>
+                <a data-role="button" data-transition="none" id="btn-finalizar-tareas">
+                    Finalizar
+                </a>
+            </div>
+        </div>
+
+        <!-- listar partes -->
+        <div data-role="page" data-theme="b" id="page19">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page19" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Listar Partes
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput14">
+                            Referencia
+                        </label>
+                        <input name="" id="textinput14" placeholder="" value="" type="text" />
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput15">
+                            Alias
+                        </label>
+                        <input name="" id="textinput15" placeholder="" value="" type="text" />
+                    </fieldset>
+                </div>
+                <a data-role="button" data-transition="none" href="#page19">
+                    Consultar
+                </a>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        Listado
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page27" data-transition="none">
+                            Alias: abc
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page27" data-transition="none">
+                            Alias: def
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page27" data-transition="none">
+                            Alias: fhd
+                        </a>
+                    </li>
+                </ul>
+                <a data-role="button" data-transition="none" href="#page3">
+                    Finalizar
+                </a>
+            </div>
+        </div>
+        
+        <!-- &gt; detalle listar partes -->
+        <div data-role="page" data-theme="b" id="page27">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page19" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Solicitar parte
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <h4>
+                    Alias ABC
+                </h4>
+                <div>
+                    <p>
+                        <b>
+                            Disponible:
+                        </b>
+                        5
+                    </p>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput24">
+                            Consumida
+                        </label>
+                        <input name="" id="textinput24" placeholder="" value="" type="text" />
+                    </fieldset>
+                </div>
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page27">
+                    Enviar
+                </a>
+            </div>
+        </div>
+        <!-- solicitar historial -->
+        <div data-role="page" data-theme="b" id="page20">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Solicitar Historial
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <div>
+                    <p>
+                        <b>
+                            El sistema enviara un correo con la información solicitada.
+                        </b>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- resumen cierre -->
+        <div data-role="page" data-theme="b" id="page46">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Resumen Cierre
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <div>
+                    <p>
+                        <b>
+                            El sistema ha enviado un resumen del cierre al correo electrónico.
+                        </b>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- status XMS -->
+        <div data-role="page" data-theme="b" id="page21" class="loading">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Status XMS
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <div class="encabezado"></div>
+                <div data-role="collapsible-set" id="collapsible-xms" ></div>
+            </div>
+        </div>
+        <!-- &gt; detalle status XMS -->
+        <div data-role="page" data-theme="b" id="page35">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page21" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Status XMS
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+            </div>
+        </div>
+        <!-- solictar de partes -->
+        <div data-role="page" data-theme="b" id="page16">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Partes
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <form id="form-search-partes" autocomplete="off">
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput13">
+                            Referencia
+                        </label>
+                        <input name="referencia" id="textinput13" placeholder="" value="" type="text" />
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput16">
+                            Alias
+                        </label>
+                        <input name="alias" id="textinput16" placeholder="" value="" type="text" />
+                    </fieldset>
+                </div>
+                <input type="submit" data-transition="none" href="" value="Consultar" id="btn-search-partes"/>
+                </form>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true" id="list-search-partes">
+                    <li data-role="list-divider" role="heading">
+                        Resultado
+                    </li>
+                </ul>
+                <span>Seleccione las partes que desea <br> solicitar</span>
+                <ul data-role="listview" data-split-icon="delete" data-inset="true" id="lista-solicitar-partes" data-split-theme="d">
+                    <li data-role="list-divider" role="heading">
+                        Solicitar
+                    </li>
+                </ul>
+                <input type="button" data-transition="none" value="Solicitar" id="solicitar-partes"/>
+            </div>
+        </div>
+        <!-- gestion de partes -->
+        <div data-role="page" data-theme="b" id="page41">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Partes
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <a href="#page16" data-transition="none">
+                                solicitar partes
+                            </a>
+                <div data-role="collapsible-set" data-theme="b" data-content-theme="c" id="partes-solicitadas">
+                </div>
+            </div>
+        </div>
+        <!-- novedades-->
+        <div data-role="page" data-theme="b" id="page15" class="loading">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page15" data-icon="back" data-iconpos="notext" class="ui-btn-left" id="back-novedad">
+                    Volver
+                </a>
+                <h3>
+                    Novedades
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <form id="form-novedades-ticket" data-novedad='' autocomplete="off">
+                <div data-role="fieldcontain" class="select-novedad">
+                    <label for="novedad-ticket">
+                        Tipo
+                    </label>
+                    <!--select data-role="none" name="IDCODIGONOVEDADCONFIGURACION" id="novedad-ticket" class="novedades-ticket">
+                    </select-->
+                </div>
+                <div>
+                    <p>
+                        <b>
+                            Descripción de la novedad
+                        </b>
+                    </p>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="pregunta">
+                            Comentario
+                        </label>
+                        <textarea name="PREGUNTA" id="pregunta" class="text-novedades"></textarea>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain" class="div-adicional">
+                    <fieldset data-role="controlgroup">
+                        <label for="valor-adicional">
+                            Tiempo
+                        </label>
+                        <input type="number" name="VALORADICIONALPREGUNTA" id="valor-adicional" class="text-novedades" min="0" />
+                    </fieldset>
+                </div>
+                <input value="Enviar" type="submit" data-role="button" data-theme="b" id="btn-send-novedad" data-icon="check"/>
+                </form>
+            </div>
+        </div>
+        <!-- &gt; detalle parte -->
+        <div data-role="page" data-theme="b" id="page36">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page16" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Detalle
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div id="detalle-parte">
+                    <h3>
+                        Alias:
+                    </h3>
+                    <div>
+                        <p>
+                            <b>
+                                Parte:
+                            </b>
+                        </p>
+                        <p>
+                            <b>
+                                Disponible:
+                            </b>
+                        </p>
+                        <p>
+                            <b>
+                                Solicitadas:
+                            </b>
+                        </p>
+                        <p>
+                            <b>
+                                Recibidas:
+                            </b>
+                        </p>
+                        <p>
+                            <b>
+                                Pendientes por recibir:
+                            </b>
+                        </p>
+                        <p>
+                            <b>
+                                Pendientes Por devolver:
+                            </b>
+                        </p>
+                        <p>
+                            <b>
+                                Devueltas:
+                            </b>
+                        </p>
+                        <p>
+                            <b>
+                                Estado:
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <a data-role="button" data-transition="none" href="#page29" id="solicita-parte">
+                    Solicitar parte
+                </a>
+                <a data-role="button" data-transition="none" href="#page38" id="confirma-parte">
+                    Confirmar recibido
+                </a>
+                <a data-role="button" data-transition="none" href="#page37" id="devuelve-parte">
+                    Devolver parte
+                </a>
+            </div>
+        </div>
+        <!-- solicitar parte -->
+        <div data-role="page" data-theme="b" id="page29">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page19" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Solicitud
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <h4>
+                    Alias
+                </h4>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput28">
+                            Cantidad
+                        </label>
+                        <input name="" id="textinput28" placeholder="" value="" type="number" />
+                    </fieldset>
+                </div>
+                <a data-role="button" data-transition="none" href="#">
+                    Enviar
+                </a>
+            </div>
+        </div>
+        <!-- confirmar recibido -->
+        <div data-role="page" data-theme="b" id="page38">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page19" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Confirmar
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <h4>
+                    Alias
+                </h4>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput40">
+                            Cantidad recibida
+                        </label>
+                        <input name="" id="textinput40" placeholder="" value="" type="number" />
+                    </fieldset>
+                </div>
+                <a data-role="button" data-transition="none" href="#">
+                    Enviar
+                </a>
+            </div>
+        </div>
+        <!-- devolver parte -->
+        <div data-role="page" data-theme="b" id="page37">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page19" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Devolución
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <h4>
+                    Alias ABC
+                </h4>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textinput38">
+                            Cantidad
+                        </label>
+                        <input name="" id="textinput38" placeholder="" value="" type="text" />
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="selectmenu7">
+                        Motivo
+                    </label>
+                    <select data-role="none" name="selectmenu7" id="selectmenu7">
+                    </select>
+                </div>
+                <a data-role="button" data-transition="none" href="#">
+                    Enviar
+                </a>
+            </div>
+        </div>
+        <!-- seguimiento actividades -->
+        <div data-role="page" data-theme="b" id="page22">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Seguimiento de actividades
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true" id="list-actividades">
+                    <li data-role="list-divider" role="heading">
+                        Actividades
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- &gt; detalle seguimiento -->
+        <div data-role="page" data-theme="b" id="page23">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-transition="none" href="#page22" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Seguimiento
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+            </div>
+        </div>
+        <!-- rechazar -->
+        <div data-role="page" data-theme="b" id="page17">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page17" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Rechazar
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        Divider
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="none">
+                            Novedad 1
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="none">
+                            Novedad 2
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="none">
+                            Novedad 3
+                        </a>
+                    </li>
+                </ul>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="textarea9">
+                            Descripción
+                        </label>
+                        <textarea name="" id="textarea9" placeholder="">
+                        </textarea>
+                    </fieldset>
+                </div>
+                <input type="submit" value="Enviar" />
+            </div>
+        </div>
+        <!-- tools -->
+        <div data-role="page" data-theme="b" id="page24">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left toolback">
+                    Volver
+                </a>
+                <h3>
+                    Tools
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <a rel="external" data-role="button" data-icon="home" data-transition="none" data-iconpos="top" href="codes.html">Status: Diccionario </a>
+                <a rel="external" data-role="button"data-icon="delete" data-iconpos="top" href="metricas.html"> Análisis de métricas </a>
+                <input type="submit" data-icon="gear" data-iconpos="top" value="Documentación técnica" />
+            </div>
+        </div>
+        <!-- Mensajeria -->
+        <div data-role="page" data-theme="b" id="page42">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Mensajeria
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <ul data-role="listview" data-inset="true" id="msn-generados" class="msn-novedades">
+                    <li data-role="list-divider" role="heading">
+                        Mensajes generados
+                    </li>
+                </ul>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true" id="msn-recibidos" class="msn-novedades">
+                    <li data-role="list-divider" role="heading">
+                        Mensajes recibidos
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- obtenerNovedad detalle novedad -->
+        <div data-role="page" data-theme="b" id="page43">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-transition="none" href="#page5" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Detalle Novedad
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div class="titulo-reporte-servicio"></div>
+                <div id="detalle-msn-novedad"></div>
+            </div>
+        </div>
+        <!-- listado Ingenieros -->
+        <div data-role="page" data-theme="b" id="page26">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page3" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Asignación de servicios
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div id="map-list-ing"></div>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true"
+                    id="list-ingenieros">
+                    <li data-role="list-divider" role="heading">
+                        Ingenieros
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- &gt; detalle Ingenieros -->
+        <div data-role="page" data-theme="b" id="page30">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page26" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Listado Ing.
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <h3 id="name-ingeniero">
+                    Ing.
+                </h3>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true" id="list-servicios-ing">
+                    <li data-role="list-divider" role="heading">
+                        Asignaciones
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- reasignar servicio -->
+        <div data-role="page" data-theme="b" id="page31">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page26" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Asignar a:
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <form autocomplete="off">
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <legend>
+                            Ingenieros
+                        </legend>
+                    </fieldset>
+                </div>
+                <a data-role="button" data-transition="none" href="#page26">
+                    Aceptar
+                </a>
+                </form>
+            </div>
+        </div>
+        <!-- inconclusas -->
+        <div data-role="page" data-theme="b" id="page33">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page3" data-icon="back" data-iconpos="notext" class="ui-btn-left">
+                    Volver
+                </a>
+                <h3>
+                    Inconclusas
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        Servicios
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page12" data-transition="none">
+                            0002: Enviar Cierre
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#" data-transition="none">
+                            0001: Devolver Parte
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page32" data-transition="none">
+                            0003: Check List
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- mensajes sin leer -->
+        <div data-role="page" data-theme="b" id="page40">
+            <div data-theme="b" data-role="header">
+                <a data-role="button" data-direction="reverse" data-transition="none" href="#page3" data-icon="back" data-iconpos="notext" class="ui-btn-left msn-leer">
+                    Volver
+                </a>
+                <h3>
+                    Mensajes sin leer
+                </h3>
+                <a href="#page3" data-theme="" data-icon="home" data-transition="none">
+                                home
+                            </a>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        Mensajes sin leer
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script>
+
+            //(reporte servicio) preview
+            $("#form-cierra-ticket").validate({
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+
+            var ctx,
+            canvas = $('#signaturePanel')[0],
+            start = false;
+            $( '#page28' ).on( 'pageshow',function(event){
+                if(canvas.getContext) {
+                    ctx = canvas.getContext('2d');
+                    $('#clear-canvas').click();
+                }
+            });
+
+            $('#clear-canvas').on('click', function(event, ui){
+                canvas.width = canvas.width;
+                ctx.lineWidth = 3;
+            });
+
+            $('#signaturePanel').on('touchstart',function(event) {
+                var mousePos = getMousePos(event.originalEvent.touches[0]);
+                ctx.beginPath();
+                ctx.arc(mousePos.x, mousePos.y,1,0*Math.PI,2*Math.PI);
+                ctx.fill();
+                ctx.stroke();
+                ctx.moveTo(mousePos.x, mousePos.y);
+                start = true;
+            });
+            $('#signaturePanel').on('touchmove',function(event) {
+                event.preventDefault();
+                var mousePos = getMousePos(event.originalEvent.touches[0]);
+                if (start) {
+                    ctx.lineTo(mousePos.x, mousePos.y);
+                    ctx.stroke();
+                }
+            });
+            $('#signaturePanel').on('touchend',function(event) {
+                if (start) {
+                    start = false;
+                }
+            });
+
+            function getMousePos(evt) {
+                var rect = canvas.getBoundingClientRect();
+                return {
+                    x: evt.clientX - rect.left,
+                    y: evt.clientY - rect.top
+                };
+            }
+
+            function submitPreview(obj){
+
+                //Valida el ingreso de hora cuando esta en offline
+                var hora_cierre = $("#textinput10").val();
+                if ($("#toggleswitch3").val() == "alex-online" || ($("#toggleswitch3").val() == "andres-offline" && hora_cierre.length == 5 && hora_cierre.indexOf(":") == 2))
+                {
+                    var formData = $("#form-cierra-ticket").serialize();
+                    // $.mobile.changePage("preview.html");
+                    $('#btn-preview').button('disable');
+                    $.mobile.loading('show');
+                    if($('#signaturePanel') === undefined){
+                        $('#page28 content-canvas').appendto('<canvas id="signaturePanel" width="288" height="100">no canvas support</canvas>')
+                    }
+                    preview(formData);
+                    return false;
+                }
+                else page9
+                {
+                    alert("Debe ingresar la hora");
+                }
+
+                //alert($("#toggleswitch3").val() + "---" + $("#textinput10").val().length);
+            }
+
+            //Versión de la app
+            $('#page1').on("pagebeforeshow", function() {
+                //Actualiza el número de la versión
+                $('#version').html(version);
+            });
+
+            //autenticarse
+            $("#form-login").submit(function(event){
+                var formData = $("#form-login").serialize();
+                $('#btn-login').button('disable');
+                $.mobile.loading('show');
+                autentication(formData);
+                var fecha = new Date();
+                 $('#abrir-ano').html('');
+                 $('#reporte-ano').html('');
+                $('#abrir-ano').append(
+                    '<option>'+fecha.getFullYear()+'</option>'+
+                    '<option>'+(fecha.getFullYear()-1)+'</option>'
+                )
+                $('#reporte-ano').append(
+                    '<option>'+fecha.getFullYear()+'</option>'+
+                    '<option>'+(fecha.getFullYear()-1)+'</option>'
+                )
+                return false;
+            });
+
+            //recuperar contraseña
+            $("#btn-recovery").click(function(event){
+                event.preventDefault();
+                var formData = $("#form-recovery").serialize();
+                $.mobile.loading('show');
+                recoveryPass(formData);
+            });
+
+            $('#page3').on( 'pagebeforeshow',function(event){
+                event.preventDefault();
+                if(admin == 'False'){
+                    $('#menu4').hide();
+                }
+                loadNumService();
+            });
+
+            //(novedades) envia las novedades
+            $("#btn-send-novedad").click(function(event){
+                event.preventDefault();
+                var formData = $("#form-novedades-ticket").serialize();
+                if ($('.novedades-ticket option:selected').val() > '0'){
+                    $.mobile.loading('show');
+                    $('#btn-send-novedad').button('disable');
+                    registroNovedad(formData, 0);
+                }
+            });
+
+            $('a.cerrar-sesion').click(function(event){
+                event.preventDefault();
+                jQuery(document).empty();
+                window.location.replace('main.html');
+                sessionStorage.clear();
+            });
+
+//***--------menu principal--------
+            //(gestionar servicios) menu1
+            $("#menu1").on('click', function(event){
+                event.preventDefault();
+                if($("li span#num-servicios").text() > 0){
+                    $.mobile.changePage ($("#page7"),{transition:"none"});
+                    listTicket();
+                }
+            });
+            //(reporte novedades) menu2
+            $("#menu2").click(function(event){
+                event.preventDefault();
+                document.getElementById("form-novedades-ticket").reset();
+                $("#form-novedades-ticket").data("novedad","1");
+                $("#back-novedad").attr('href', '#page3');
+                novedadesSistema();
+            });
+
+            //(reporte novedades) menu2
+            $("#menu3").click(function(event){
+                event.preventDefault();
+                accionesSinCerrar();
+            });
+
+            //(asignacion de servicios) menu4
+            $("#menu4").click(function(event){
+                event.preventDefault();
+                $.mobile.loading('show');
+                mapListadoIng();
+            });
+
+            //(documentacion ) menu5
+            $("#menu5").click(function(event){
+                alert('Va a ser redirigido a otra pagina');
+            });
+            
+            //(mensajes sin leer) menu6
+            $("#menu6").click(function(event){
+                event.preventDefault();
+                if($("#cantidad-mensajes").text() > 0){
+                    $.mobile.changePage ($("#page40"),{transition:"none"});
+                    $.mobile.loading('show');
+                }
+            });
+
+            $('#page40').on('pagebeforeshow', function(event){
+                    mensajesSinleer();
+            });
+
+//--------------sub menu gestionar operaciones (lista de tickets)
+            //(gestionar servicios) carga el numero de ticket
+            $( '#page5' ).on( 'pagebeforeshow',function(event){
+                $("h4#num_ticket").html('');
+                $("h4#num_ticket").append("Ticket #: "+sessionStorage.getItem("idTicket")
+                );
+            });
+            
+            $('#page5 a[data-direction="reverse"]').click(function(event){
+                back = true;
+            });
+
+    //**---------apertura caso
+            //(datos del servicio)
+            $("#page10").on('pageshow', function(event){
+                event.preventDefault();
+                dataTicket();
+            });
+            
+            //(datos del servicio) aceptar caso
+            $('#page11').on("pageshow", function() {
+                event.preventDefault();
+                aceptarCaso();
+            });
+            
+            //(datos del servicio) transito caso
+            $('#page45').on("pageshow", function() {
+                event.preventDefault();
+                transitoCaso();
+            });
+            
+            //(ubicacion) carga el mapa cuando se crea la pagina
+            $('#page10').on("pagebeforeshow", function() {
+                if(navigator.geolocation) {
+                    $.mobile.loading('show');
+                    routeticket();
+                }
+            });
+            
+            $('a.recargar-mapa').click(function(event){
+                event.preventDefault();
+                routeticket();
+            });
+            
+            //(abrir)
+            $('#page8').on("pageshow", function() {
+                $.mobile.loading('hide');
+                $("#acc-apage8").attr('href', '#page8');
+                document.getElementById("form-open-case").reset();
+            });
+
+            $('#page8').on("pagebeforeshow", function() {
+                $.mobile.loading('show');
+                $("#acc-apage8").attr('href', '#');
+                document.getElementById("form-open-case").reset();
+
+
+                $("#select_id").selectmenu('refresh', true) 
+                $(this).find("div.fecha-hora-abrir").hide();
+                if($("#toggleswitch2").val()==="false"){
+                    $("#toggleswitch2").change();
+                }
+            });
+
+            //(abrir) switch
+            $("#toggleswitch2").bind( "change", function(event, ui) {
+                if($(this).val()==="false"){
+                    $('#page8').find("div.fecha-hora-abrir").show();
+                }else{
+                    $('#page8').find("div.fecha-hora-abrir").hide();
+                }
+                $('#page8 div[data-role="fieldcontain"]').fieldcontain('refresh');
+                $('#abrir-ano').selectmenu({
+                    create: function (event, ui){}
+                });
+            });
+
+    //**--------cierre ticket
+            //(tareas)
+            $("#page12").on('pagebeforeshow', function(){
+                $.mobile.loading('show');
+                $("#acc-apage12").attr('href', '#');
+            });
+            $("#page12").on('pageshow', function(){
+                moduletickets();
+            });
+            
+            //(tareas) crear modulo
+            $("#btn-add-module").click(function(){
+                $(this).button('disable');
+                agregarModulo();
+            });
+
+            //Finaliza el cierre de tareas
+            $("#btn-finalizar-tareas").click(function(event){
+                event.preventDefault();
+
+                //Guarda los totales de modulos
+                var total_modulos_docbase = sessionStorage.getItem('modulos_docbase');
+                var total_modulos_guardados = sessionStorage.getItem('modulos_guardados');
+
+                //Valida la cantidad de módulos
+                if(total_modulos_guardados ==  total_modulos_docbase)
+                {
+                    $.mobile.changePage($('#page32'),{transition:'none'});
+                    
+                }
+                else
+                {
+                    alert('Faltan modulos por guardar');
+                }
+            });
+            
+            //(check list)
+            $("#page32").on('pageshow', function(){
+                $.mobile.loading('show');
+                checkList();
+            });
+            
+            //(reporte servicio) load page
+            $('#page9').on("pageshow", function() {
+                $.mobile.loading('hide');
+                $("#acc-apage9").attr('href', '#page9');
+            });
+            
+            $('#page9').on("pagebeforeshow", function() {
+                document.getElementById("form-cierra-ticket").reset();
+                $(this).find("div.fecha-hora-reporte").hide();
+                if($("#toggleswitch3").val()==="andres-offline"){
+                    $("#toggleswitch3").change();
+                }
+            });
+            
+            //(reporte servicio) switch
+            $("#toggleswitch3").bind( "change", function(event, ui) {
+                if($(this).val()==="andres-offline"){
+                    $('#page9').find("div.fecha-hora-reporte").show();
+                }else{
+                    $('#page9').find("div.fecha-hora-reporte").hide();
+                }
+                $('#page9 div[data-role="fieldcontain"]').fieldcontain('refresh');
+                $('#reporte-ano').selectmenu({
+                    create: function (event, ui){}
+                });
+            });
+            
+            //(reporte servicio) enviar
+            $("#btn-send-close").click(function(event){
+
+                event.preventDefault();
+                var formData = $("#form-cierra-ticket").serialize();
+                $(this).button('disable');
+                $.mobile.loading('show');
+                cerrarreparacionticket(formData);
+            });
+
+            //(abrir) apertura caso
+            $("#btn-open-case").click(function(event){
+                event.preventDefault();
+
+                //Valida el ingreso de hora cuando esta en offline
+                var hora_apertura = $("#textinput7").val();
+                //if ( $("#toggleswitch2").val() == "true" || ($("#toggleswitch2").val() == "false" && (hora_apertura.length == 5 && hora_apertura.indexOf(":") == 2)
+                if ( $("#toggleswitch2").val() == "true" || ($("#toggleswitch2").val() == "false" && hora_apertura.length == 5 && hora_apertura.indexOf(":") == 2))
+                {
+                    var formData = $("#form-open-case").serialize();
+                    $("#btn-open-case").button('disable');
+                    $.mobile.loading('show');
+                    opencase(formData);
+                }
+                else 
+                {
+                    alert("Debe ingresar la hora");
+                }
+
+                //alert($("#toggleswitch2").val() + "---" + $("#textinput7").val().length );
+                
+            });
+    
+    //**--------solicitar partes
+            $('#page16').on('pageshow', function(){
+                limpiaSearch();
+            })
+            $('#solicitar-partes').click(function(){
+                $('#solicitar-partes').button('disable');
+                $.mobile.loading('show');
+                solicitarParte();
+            });    
+
+    //**--------general ticket
+            //(status xms)
+            $("#page21").on('pageshow', function(){
+                statusXMS();
+            });
+
+            //(novedades)
+            $('#page15').on('pageshow', function(){
+                $("div.div-adicional").hide();
+                $('#btn-send-novedad').button('disable');
+                if($(this).find('form').data('novedad') === '1'){
+                    $('#page15 h3.ui-title').text('Novedades Generales');
+                }else{
+                     $('#page15 h3.ui-title').text('Novedades');
+                }
+            });
+            
+            //(gestion partes)
+            $('#page41').on('pageshow', function(event){
+                $.mobile.loading('show');
+                listarPartesSolicitadas();
+            });
+            
+            //(gestion partes) consultar partes
+            $("#btn-search-partes").click(function(event){
+                event.preventDefault();
+                var formData = $("#form-search-partes").serialize();
+                searchPartes(formData);
+            });
+            
+            //(seguimiento de actividades)
+            $("#page22").on('pageshow', function(){
+                $.mobile.loading('show');
+                seguimientoActividades();
+            });
+            
+            //mensajeria
+            $('#page42').on("pageshow", function() {
+                $.mobile.loading('show');
+                listarNovedades();
+            });
+    
+    //**--------Solicitar historial
+            $('#page20').on("pagebeforeshow", function() {
+                solicitarHistorial();
+            });
+    
+    //**--------resumen cierre
+            $('#page46').on("pagebeforeshow", function() {
+                resumenCierre();
+            });
+
+//--------------sub menu asignar servicios
+            //(asignar servicios) carga el mapa cuando se muestra la pagina
+            $('#page26').on("pageshow", function() {
+                $.mobile.loading('show');
+            });
+
+//---------------mensajes sin leer
+            var back = false;
+            $('.loading').live( 'pageshow', function(){
+                $.mobile.loading('show');
+
+                if(back & $.mobile.activePage.data('url')==='page7'){
+                    listTicket();
+                    $.mobile.loading('hide');
+                    back = false;
+                }
+            });
+
+            $('.toolback').on('click', function(event, ui){
+                opcionesGestionReparaccion();
+            });
+
+            $('div[data-role="page"]').on('pagebeforeshow', function(){
+                if($.mobile.activePage.data('url') !== 'page1'){
+                    if(sessionStorage.getItem('idUsuario') === null){
+                        jQuery(document).empty();
+                        window.location.replace('main.html');
+                        sessionStorage.clear();
+                    }
+                }
+            });
+
+    //**--------Botones regresar del cierre de tareas
+
+            //Botón regresar de cerrar tareas
+            $("#btn-page12-back").click(function(event){
+                event.preventDefault();
+                reloadMenuOption();
+            });
+
+            //Botón regresar de checklist
+            $("#btn-page32-back").click(function(event){
+                event.preventDefault();
+                reloadMenuOption();
+            });
+
+            //Botón regresar de reporte de servicio
+            $("#btn-page9-back").click(function(event){
+                event.preventDefault();
+                $('.ui-select select').val('').selectmenu('refresh');
+                reloadMenuOption();
+            });
+
+            //Botón regresar de vista previa
+            $("#btn-page28-back").click(function(event){
+                event.preventDefault();
+                reloadMenuOption();
+            });
+
+            $("#btn-page8-back").click(function(event){
+                event.preventDefault();
+                //reloadMenuOption();
+                $('.ui-select select').val('').selectmenu('refresh');
+                $.mobile.changePage($('#page5'),{transition:'none'});
+            });
+
+    //**--------Botones regresar servicios offline            
+
+            // $('.canvas-delete').on('click', function(){
+            //     $('#page28').empty();
+            // });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        </title>
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/my.css" />
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/messages_es.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/phone.js"></script>
+        <script type="text/javascript" src="js/default-min.js"></script>
+        <script type="text/javascript" src="js/my.js"></script>
+        <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+        <script>
+
+            var res_misspicks_FM1,
+                res_comealongs_FM1,
+                res_short_FM1,
+                res_singles_FM1,
+                res_longs_FM1,
+                res_earlydoubles_FM1,
+                res_latedoubles_FM1,
+                res_latetapes_FM1,
+                res_proxgain_FM1,
+                res_wafeformdistortion_FM1,
+                res_floor_FM1
+                res_proxcalibrationvalue_FM1;
+
+                var res_misspicks_FM2,
+                res_comealongs_FM2,
+                res_short_FM2,
+                res_singles_FM2,
+                res_longs_FM2,
+                res_earlydoubles_FM2,
+                res_latedoubles_FM2,
+                res_latetapes_FM2,
+                res_proxgain_FM2,
+                res_wafeformdistortion_FM2,
+                res_floor_FM2
+                res_proxcalibrationvalue_FM2;
+
+                var res_misspicks_FM3,
+                res_comealongs_FM3,
+                res_short_FM3,
+                res_singles_FM3,
+                res_longs_FM3,
+                res_earlydoubles_FM3,
+                res_latedoubles_FM3,
+                res_latetapes_FM3,
+                res_proxgain_FM3,
+                res_wafeformdistortion_FM3,
+                res_floor_FM3
+                res_proxcalibrationvalue_FM3;
+
+                var res_misspicks_FM4,
+                res_comealongs_FM4,
+                res_short_FM4,
+                res_singles_FM4,
+                res_longs_FM4,
+                res_earlydoubles_FM4,
+                res_latedoubles_FM4,
+                res_latetapes_FM4,
+                res_proxgain_FM4,
+                res_wafeformdistortion_FM4,
+                res_floor_FM4
+                res_proxcalibrationvalue_FM4;
+
+                var res_misspicks_FM5,
+                res_comealongs_FM5,
+                res_short_FM5,
+                res_singles_FM5,
+                res_longs_FM5,
+                res_earlydoubles_FM5,
+                res_latedoubles_FM5,
+                res_latetapes_FM5,
+                res_proxgain_FM5,
+                res_wafeformdistortion_FM5,
+                res_floor_FM5
+                res_proxcalibrationvalue_FM5;
+        </script>
+    </head>
+
+    <body>
+	   <!-- metricas -->
+        <div data-role="page" data-theme="b" id="page44">
+            <div data-theme="b" data-role="header">
+                <h3>
+                    Métricas
+                </h3>
+                <a href="main.html#page24" data-direction="reverse" data-role="button" data-icon="back" data-iconpos="notext" class="ui-btn-left" data-ajax="false" rel="external">
+                    Volver
+                </a>
+            </div>
+            <div data-role="content">
+                <div data-role="collapsible-set">
+
+                    <!-- Recibe valores Feed 1  -->
+                    <div data-role="collapsible">
+                        <h3>
+                            Feed Module 1
+                        </h3>
+                        <!-- Miss Picks -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="misspicks_FM1">Miss Picks:</label>
+                                <input name="misspicks_FM1" id="misspicks_FM1" placeholder="Miss Picks" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Come Alongs -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="comealongs_FM1">Come Alongs:</label>
+                                <input name="comealongs_FM1" id="comealongs_FM1" placeholder="Come Alongs" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Short -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="short_FM1">Short:</label>
+                                <input name="short_FM1" id="short_FM1" placeholder="Short" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Singles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="singles_FM1">Singles:</label>
+                                <input name="singles_FM1" id="singles_FM1" placeholder="Singles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Longs -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="longs_FM1">Longs:</label>
+                                <input name="longs_FM1" id="longs_FM1" placeholder="Longs" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Early Doubles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="earlydoubles_FM1">Early Doubles:</label>
+                                <input name="earlydoubles_FM1" id="earlydoubles_FM1" placeholder="Early Doubles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- late Doubles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="latedoubles_FM1">Late Doubles</label>
+                                <input name="latedoubles_FM1" id="latedoubles_FM1" placeholder="Late Doubles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- late Tapes -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="latetapes_FM1">Late Tapes:</label>
+                                <input name="latetapes_FM1" id="latetapes_FM1" placeholder="Late Tapes" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Prox gain -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="proxgain_FM1">Prox Gain:</label>
+                                <input name="proxgain_FM1" id="proxgain_FM1" placeholder="Prox gain" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Wafe Form Distortion -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="wafeformdistortion_FM1">Wafe Form Distortion:</label>
+                                <input name="wafeformdistortion_FM1" id="wafeformdistortion_FM1" placeholder="Wafe Form Distortion" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Floor -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="floor_FM1">Floor:</label>
+                                <input name="floor_FM1" id="floor_FM1" placeholder="Floor" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Prox Calibration Value -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="proxcalibrationvalue_FM1">Prox Calibration Value:</label>
+                                <input name="proxcalibrationvalue_FM1" id="proxcalibrationvalue_FM1" placeholder="Prox Calibration Value" value=""
+                                type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Submit FM1-->
+                        <a data-role="button" href="" data-icon="check" data-iconpos="left" id="btn-FM1">
+                            Diagnosticar Modulo 1
+                        </a>
+                    </div>
+
+                    <!-- Recibe valores Feed 2 -->
+                    <div data-role="collapsible">
+                        <h3>
+                            Feed Module 2
+                        </h3>
+                        <!-- Miss Picks -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="misspicks_FM2">Miss Picks:</label>
+                                <input name="misspicks_FM2" id="misspicks_FM2" placeholder="Miss Picks" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Come Alongs -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="comealongs_FM2">Come Alongs:</label>
+                                <input name="comealongs_FM2" id="comealongs_FM2" placeholder="Come Alongs" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Short -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="short_FM2">Short:</label>
+                                <input name="short_FM2" id="short_FM2" placeholder="Short" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Singles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="singles_FM2">Singles:</label>
+                                <input name="singles_FM2" id="singles_FM2" placeholder="Singles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Longs -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="longs_FM2">Longs:</label>
+                                <input name="longs_FM2" id="longs_FM2" placeholder="Longs" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Early Doubles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="earlydoubles_FM2">Early Doubles:</label>
+                                <input name="earlydoubles_FM2" id="earlydoubles_FM2" placeholder="Early Doubles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- late Doubles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="latedoubles_FM2">Late Doubles</label>
+                                <input name="latedoubles_FM2" id="latedoubles_FM2" placeholder="Late Doubles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- late Tapes -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="latetapes_FM2">Late Tapes:</label>
+                                <input name="latetapes_FM2" id="latetapes_FM2" placeholder="Late Tapes" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Prox gain -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="proxgain_FM2">Prox Gain:</label>
+                                <input name="proxgain_FM2" id="proxgain_FM2" placeholder="Prox gain" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Wafe Form Distortion -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="wafeformdistortion_FM2">Wafe Form Distortion:</label>
+                                <input name="wafeformdistortion_FM2" id="wafeformdistortion_FM2" placeholder="Wafe Form Distortion" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Floor -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="floor_FM2">Floor:</label>
+                                <input name="floor_FM2" id="floor_FM2" placeholder="Floor" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Prox Calibration Value -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="proxcalibrationvalue_FM2">Prox Calibration Value:</label>
+                                <input name="proxcalibrationvalue_FM2" id="proxcalibrationvalue_FM2" placeholder="Prox Calibration Value" value=""
+                                type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Submit FM2-->
+                        <a data-role="button" href="" data-icon="check" data-iconpos="left" id="btn-FM2">
+                            Diagnosticar Modulo 2
+                        </a>
+                    </div>
+
+                    <!-- Recibe valores Feed 3 -->
+                    <div data-role="collapsible">
+                        <h3>
+                            Feed Module 3
+                        </h3>
+                        <!-- Miss Picks -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="misspicks_FM3">Miss Picks:</label>
+                                <input name="misspicks_FM3" id="misspicks_FM3" placeholder="Miss Picks" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Come Alongs -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="comealongs_FM3">Come Alongs:</label>
+                                <input name="comealongs_FM3" id="comealongs_FM3" placeholder="Come Alongs" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Short -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="short_FM3">Short:</label>
+                                <input name="short_FM3" id="short_FM3" placeholder="Short" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Singles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="singles_FM3">Singles:</label>
+                                <input name="singles_FM3" id="singles_FM3" placeholder="Singles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Longs -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="longs_FM3">Longs:</label>
+                                <input name="longs_FM3" id="longs_FM3" placeholder="Longs" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Early Doubles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="earlydoubles_FM3">Early Doubles:</label>
+                                <input name="earlydoubles_FM3" id="earlydoubles_FM3" placeholder="Early Doubles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- late Doubles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="latedoubles_FM3">Late Doubles</label>
+                                <input name="latedoubles_FM3" id="latedoubles_FM3" placeholder="Late Doubles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- late Tapes -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="latetapes_FM3">Late Tapes:</label>
+                                <input name="latetapes_FM3" id="latetapes_FM3" placeholder="Late Tapes" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Prox gain -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="proxgain_FM3">Prox Gain:</label>
+                                <input name="proxgain_FM3" id="proxgain_FM3" placeholder="Prox gain" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Wafe Form Distortion -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="wafeformdistortion_FM3">Wafe Form Distortion:</label>
+                                <input name="wafeformdistortion_FM3" id="wafeformdistortion_FM3" placeholder="Wafe Form Distortion" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Floor -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="floor_FM3">Floor:</label>
+                                <input name="floor_FM3" id="floor_FM3" placeholder="Floor" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Prox Calibration Value -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="proxcalibrationvalue_FM3">Prox Calibration Value:</label>
+                                <input name="proxcalibrationvalue_FM3" id="proxcalibrationvalue_FM3" placeholder="Prox Calibration Value" value=""
+                                type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Submit FM3-->
+                        <a data-role="button" href="" data-icon="check" data-iconpos="left" id="btn-FM3">
+                            Diagnosticar Modulo 3
+                        </a>
+                    </div>
+
+                    <!-- Recibe valores Feed 4 -->
+                    <div data-role="collapsible">
+                        <h3>
+                            Feed Module 4
+                        </h3>
+                        <!-- Miss Picks -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="misspicks_FM4">Miss Picks:</label>
+                                <input name="misspicks_FM4" id="misspicks_FM4" placeholder="Miss Picks" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Come Alongs -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="comealongs_FM4">Come Alongs:</label>
+                                <input name="comealongs_FM4" id="comealongs_FM4" placeholder="Come Alongs" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Short -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="short_FM4">Short:</label>
+                                <input name="short_FM4" id="short_FM4" placeholder="Short" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Singles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="singles_FM4">Singles:</label>
+                                <input name="singles_FM4" id="singles_FM4" placeholder="Singles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Longs -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="longs_FM4">Longs:</label>
+                                <input name="longs_FM4" id="longs_FM4" placeholder="Longs" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Early Doubles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="earlydoubles_FM4">Early Doubles:</label>
+                                <input name="earlydoubles_FM4" id="earlydoubles_FM4" placeholder="Early Doubles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- late Doubles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="latedoubles_FM4">Late Doubles</label>
+                                <input name="latedoubles_FM4" id="latedoubles_FM4" placeholder="Late Doubles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- late Tapes -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="latetapes_FM4">Late Tapes:</label>
+                                <input name="latetapes_FM4" id="latetapes_FM4" placeholder="Late Tapes" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Prox gain -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="proxgain_FM4">Prox Gain:</label>
+                                <input name="proxgain_FM4" id="proxgain_FM4" placeholder="Prox gain" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Wafe Form Distortion -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="wafeformdistortion_FM4">Wafe Form Distortion:</label>
+                                <input name="wafeformdistortion_FM4" id="wafeformdistortion_FM4" placeholder="Wafe Form Distortion" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Floor -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="floor_FM4">Floor:</label>
+                                <input name="floor_FM4" id="floor_FM4" placeholder="Floor" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Prox Calibration Value -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="proxcalibrationvalue_FM4">Prox Calibration Value:</label>
+                                <input name="proxcalibrationvalue_FM4" id="proxcalibrationvalue_FM4" placeholder="Prox Calibration Value" value=""
+                                type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Submit FM3-->
+                        <a data-role="button" href="" data-icon="check" data-iconpos="left" id="btn-FM4">
+                            Diagnosticar Modulo 4
+                        </a>
+                    </div>
+
+                    <!-- Recibe valores Feed 5 -->
+                    <div data-role="collapsible">
+                        <h3>
+                            Feed Module 5
+                        </h3>
+                        <!-- Miss Picks -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="misspicks_FM5">Miss Picks:</label>
+                                <input name="misspicks_FM5" id="misspicks_FM5" placeholder="Miss Picks" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Come Alongs -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="comealongs_FM5">Come Alongs:</label>
+                                <input name="comealongs_FM5" id="comealongs_FM5" placeholder="Come Alongs" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Short -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="short_FM5">Short:</label>
+                                <input name="short_FM5" id="short_FM5" placeholder="Short" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Singles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="singles_FM5">Singles:</label>
+                                <input name="singles_FM5" id="singles_FM5" placeholder="Singles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Longs -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="longs_FM5">Longs:</label>
+                                <input name="longs_FM5" id="longs_FM5" placeholder="Longs" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Early Doubles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="earlydoubles_FM5">Early Doubles:</label>
+                                <input name="earlydoubles_FM5" id="earlydoubles_FM5" placeholder="Early Doubles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- late Doubles -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="latedoubles_FM5">Late Doubles</label>
+                                <input name="latedoubles_FM5" id="latedoubles_FM5" placeholder="Late Doubles" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- late Tapes -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="latetapes_FM5">Late Tapes:</label>
+                                <input name="latetapes_FM5" id="latetapes_FM5" placeholder="Late Tapes" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Prox gain -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="proxgain_FM5">Prox Gain:</label>
+                                <input name="proxgain_FM5" id="proxgain_FM5" placeholder="Prox gain" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Wafe Form Distortion -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="wafeformdistortion_FM5">Wafe Form Distortion:</label>
+                                <input name="wafeformdistortion_FM5" id="wafeformdistortion_FM5" placeholder="Wafe Form Distortion" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Floor -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="floor_FM5">Floor:</label>
+                                <input name="floor_FM5" id="floor_FM5" placeholder="Floor" value="" type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Prox Calibration Value -->
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="proxcalibrationvalue_FM5">Prox Calibration Value:</label>
+                                <input name="proxcalibrationvalue_FM5" id="proxcalibrationvalue_FM5" placeholder="Prox Calibration Value" value=""
+                                type="number">
+                            </fieldset>
+                        </div>
+                        <!-- Submit FM5-->
+                        <a data-role="button" href="" data-icon="check" data-iconpos="left" id="btn-FM5">
+                            Diagnosticar Modulo 5
+                        </a>
+                    </div>
+                </div>
+                <a data-role="button" href="" data-icon="check" data-iconpos="left" id="btn-FM">
+                    Diagnosticar Todos
+                </a>
+            </div>
+        </div>
+
+        <!-- Resultado de métricas FM-->
+        <div data-role="page" data-theme="b" id="resultados">
+            <div data-theme="b" data-role="header">
+                <h3>Resultado</h3>
+                <a data-role="button" data-rel="back" data-icon="back" data-iconpos="notext" class="ui-btn-left">Volver</a>
+            </div>
+            <div data-role="content">
+                <div id="resultados_FM1">
+                    <p><b>Feed Module 1:</b></p>
+                    <ul>
+                         <!-- Miss Picks -->
+                        <li>
+                            <strong>Miss picks:</strong><span id="misspicks_FM1_val"></span>
+                            <ul id="misspicks_FM1_err">
+                                <li>Revise el sistema de extracción de billetes:</li>
+                                <li>Estado del Feed Shaft.</li>
+                                <li>Push Plate del Cassette.</li>
+                                <li>Estado de takeway (interno).</li>
+                            </ul>
+                        </li>
+
+                        <!-- Come Alongs -->
+                        <li>
+                            <strong>Come Alongs:</strong><span id="comealongs_FM1_val"></span></li>
+                            <ul id="comealongs_FM1_err">
+                                <li>Revise el estado de los cauchos del Feed Shaft, que no estén pegados</li>
+                            </ul>
+                        </li>
+
+                        <!-- Short -->
+                        <li>
+                            <strong>Short:</strong><span id="short_FM1_val"></span>
+                            <ul id="short_FM1_err">
+                                <li>Diagnosticar cambio de módulo con métricas actualizadas</li>
+                                <li>Problema electrónico del Double Detect</li>
+                                <li>Cambio de Módulo</li>
+                            </ul>
+                        </li>
+
+                        <!-- singles -->
+                        <li>
+                            <strong>Singles:</strong><span id="singles_FM1_val"></span>
+                            <ul id="singles_FM1_err">
+                                <li>Billetes Perfectos</li>
+                                <li>Referencia para los calculos</li>
+                            </ul>
+                        </li>
+
+                        <!-- Longs -->
+                        <li>
+                            <strong>Longs:</strong><span id="longs_FM1_val"></span>
+                            <ul id="longs_FM1_err">
+                                <li>Revise el sistema de arrastre de billetes</li>
+                                <li>Estado y tensión de las spring rollers</li>
+                                <li>Estado de rueda Take-away</li>
+                                <li>Tensión take-away del cassette</li>
+                                <li>Estado caucho rueda central del Feed Shaft</li>
+                            </ul>
+                        </li>
+
+                        <!-- Early Doubles -->
+                        <li><strong>Early Doubles:</strong><span id="earlydoubles_FM1_val"></span>
+                            <ul id="earlydoubles_FM1_err">
+                                <li>Revise sistema de separación de billetes:</li>
+                                <li>Estado rueda stripper</li>
+                                <li>Funcionalidad del clutch</li>
+                                <li>Tensión stripper del cassette</li>
+                                <li>Que la spring roller no esté tocando el eje de la rueda stripper</li>
+                                <li>Que la rueda stripper esté bien posicionada</li>
+                            </ul>
+                        </li>
+
+                        <!-- Late Doubles -->
+                        <li>
+                            <strong>Late Doubles:</strong><span id="latedoubles_FM1_val"></span>
+                            <ul id="latedoubles_FM1_err">
+                                <li>Revise sistema de separación de billetes</li>
+                                <li>Estado rueda stripper</li>
+                                <li>Funcionalidad de clutch</li>
+                                <li>Tensión stripper del cassette</li>
+                                <li>Que la spring roller no este tocando el eje de la rueda stripper</li>
+                                <li>Que la rueda stripper este bien posicionada</li>
+                            </ul>
+                        </li>
+
+                        <!-- Late Tapes -->
+                        <li>
+                            <strong>Late Tapes:</strong><span id="latetapes_FM1_val"></span>
+                            <ul id="latetapes_FM1_err">
+                                <li>Revise las métricas del double detect para confirmar algo desgaste del fork block</li>
+                            </ul>
+                        </li>
+
+                        <!-- Prox Gain -->
+                        <li>
+                            <strong>Prox Gain:</strong><span id="proxgain_FM1_val"></span>
+                            <ul id="proxgain_FM1_err">
+                                <li>Indica dificultad del Double detect para medir billetes por desgaste del fork block</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Wafe Form Distortion -->
+                        <li>
+                            <strong>Wafe Form Distortion:</strong><span id="wafeformdistortion_FM1_val"></span>
+                            <ul id="wafeformdistortion_FM1_err">
+                                <li>Indicador de la habilidad de ver bien los billetes</li>
+                                <li>Un valor fuera de rango puede indicar baja calidad de los billetes o desgaste del fork block</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Floor -->
+                        <li>
+                            <strong>Floor:</strong><span id="floor_FM1_val"></span>
+                            <ul id="floor_FM1_err">
+                                <li>Indica la estabilidad mecánica del módulo</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Prox Calibration Value -->
+                        <li><strong>Prox Calibration Value:</strong><span id="proxcalibrationvalue_FM1_val"></span>
+                            <ul id="proxcalibrationvalue_FM1_err">
+                                <li>Calculo aproximado de la vida útil restante del double detect </li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Resultados FM2 -->
+                <div id="resultados_FM2">
+                    <p><b>Feed Module 2:</b></p>
+                    <ul>
+                         <!-- Miss Picks -->
+                        <li>
+                            <strong>Miss picks:</strong><span id="misspicks_FM2_val"></span>
+                            <ul id="misspicks_FM2_err">
+                                <li>Revise el sistema de extracción de billetes:</li>
+                                <li>Estado del Feed Shaft.</li>
+                                <li>Push Plate del Cassette.</li>
+                                <li>Estado de takeway (interno).</li>
+                            </ul>
+                        </li>
+
+                        <!-- Come Alongs -->
+                        <li>
+                            <strong>Come Alongs:</strong><span id="comealongs_FM2_val"></span></li>
+                            <ul id="comealongs_FM2_err">
+                                <li>Revise el estado de los cauchos del Feed Shaft, que no estén pegados</li>
+                            </ul>
+                        </li>
+
+                        <!-- Short -->
+                        <li>
+                            <strong>Short:</strong><span id="short_FM2_val"></span>
+                            <ul id="short_FM2_err">
+                                <li>Diagnosticar cambio de módulo con métricas actualizadas</li>
+                                <li>Problema electrónico del Double Detect</li>
+                                <li>Cambio de Módulo</li>
+                            </ul>
+                        </li>
+
+                        <!-- singles -->
+                        <li>
+                            <strong>Singles:</strong><span id="singles_FM2_val"></span>
+                            <ul id="singles_FM2_err">
+                                <li>Billetes Perfectos</li>
+                                <li>Referencia para los calculos</li>
+                            </ul>
+                        </li>
+
+                        <!-- Longs -->
+                        <li>
+                            <strong>Longs:</strong><span id="longs_FM2_val"></span>
+                            <ul id="longs_FM2_err">
+                                <li>Revise el sistema de arrastre de billetes</li>
+                                <li>Estado y tensión de las spring rollers</li>
+                                <li>Estado de rueda Take-away</li>
+                                <li>Tensión take-away del cassette</li>
+                                <li>Estado caucho rueda central del Feed Shaft</li>
+                            </ul>
+                        </li>
+
+                        <!-- Early Doubles -->
+                        <li><strong>Early Doubles:</strong><span id="earlydoubles_FM2_val"></span>
+                            <ul id="earlydoubles_FM2_err">
+                                <li>Revise sistema de separación de billetes:</li>
+                                <li>Estado rueda stripper</li>
+                                <li>Funcionalidad del clutch</li>
+                                <li>Tensión stripper del cassette</li>
+                                <li>Que la spring roller no esté tocando el eje de la rueda stripper</li>
+                                <li>Que la rueda stripper esté bien posicionada</li>
+                            </ul>
+                        </li>
+
+                        <!-- Late Doubles -->
+                        <li>
+                            <strong>Late Doubles:</strong><span id="latedoubles_FM2_val"></span>
+                            <ul id="latedoubles_FM2_err">
+                                <li>Revise sistema de separación de billetes</li>
+                                <li>Estado rueda stripper</li>
+                                <li>Funcionalidad de clutch</li>
+                                <li>Tensión stripper del cassette</li>
+                                <li>Que la spring roller no este tocando el eje de la rueda stripper</li>
+                                <li>Que la rueda stripper este bien posicionada</li>
+                            </ul>
+                        </li>
+
+                        <!-- Late Tapes -->
+                        <li>
+                            <strong>Late Tapes:</strong><span id="latetapes_FM2_val"></span>
+                            <ul id="latetapes_FM2_err">
+                                <li>Revise las métricas del double detect para confirmar algo desgaste del fork block</li>
+                            </ul>
+                        </li>
+
+                        <!-- Prox Gain -->
+                        <li>
+                            <strong>Prox Gain:</strong><span id="proxgain_FM2_val"></span>
+                            <ul id="proxgain_FM2_err">
+                                <li>Indica dificultad del Double detect para medir billetes por desgaste del fork block</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Wafe Form Distortion -->
+                        <li>
+                            <strong>Wafe Form Distortion:</strong><span id="wafeformdistortion_FM2_val"></span>
+                            <ul id="wafeformdistortion_FM2_err">
+                                <li>Indicador de la habilidad de ver bien los billetes</li>
+                                <li>Un valor fuera de rango puede indicar baja calidad de los billetes o desgaste del fork block</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Floor -->
+                        <li>
+                            <strong>Floor:</strong><span id="floor_FM2_val"></span>
+                            <ul id="floor_FM2_err">
+                                <li>Indica la estabilidad mecánica del módulo</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Prox Calibration Value -->
+                        <li><strong>Prox Calibration Value:</strong><span id="proxcalibrationvalue_FM2_val"></span>
+                            <ul id="proxcalibrationvalue_FM2_err">
+                                <li>Calculo aproximado de la vida útil restante del double detect </li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Resultados FM3 -->
+                <div id="resultados_FM3">
+                    <p><b>Feed Module 3:</b></p>
+                    <ul>
+                         <!-- Miss Picks -->
+                        <li>
+                            <strong>Miss picks:</strong><span id="misspicks_FM3_val"></span>
+                            <ul id="misspicks_FM3_err">
+                                <li>Revise el sistema de extracción de billetes:</li>
+                                <li>Estado del Feed Shaft.</li>
+                                <li>Push Plate del Cassette.</li>
+                                <li>Estado de takeway (interno).</li>
+                            </ul>
+                        </li>
+
+                        <!-- Come Alongs -->
+                        <li>
+                            <strong>Come Alongs:</strong><span id="comealongs_FM3_val"></span></li>
+                            <ul id="comealongs_FM3_err">
+                                <li>Revise el estado de los cauchos del Feed Shaft, que no estén pegados</li>
+                            </ul>
+                        </li>
+
+                        <!-- Short -->
+                        <li>
+                            <strong>Short:</strong><span id="short_FM3_val"></span>
+                            <ul id="short_FM3_err">
+                                <li>Diagnosticar cambio de módulo con métricas actualizadas</li>
+                                <li>Problema electrónico del Double Detect</li>
+                                <li>Cambio de Módulo</li>
+                            </ul>
+                        </li>
+
+                        <!-- singles -->
+                        <li>
+                            <strong>Singles:</strong><span id="singles_FM3_val"></span>
+                            <ul id="singles_FM3_err">
+                                <li>Billetes Perfectos</li>
+                                <li>Referencia para los calculos</li>
+                            </ul>
+                        </li>
+
+                        <!-- Longs -->
+                        <li>
+                            <strong>Longs:</strong><span id="longs_FM3_val"></span>
+                            <ul id="longs_FM3_err">
+                                <li>Revise el sistema de arrastre de billetes</li>
+                                <li>Estado y tensión de las spring rollers</li>
+                                <li>Estado de rueda Take-away</li>
+                                <li>Tensión take-away del cassette</li>
+                                <li>Estado caucho rueda central del Feed Shaft</li>
+                            </ul>
+                        </li>
+
+                        <!-- Early Doubles -->
+                        <li><strong>Early Doubles:</strong><span id="earlydoubles_FM3_val"></span>
+                            <ul id="earlydoubles_FM3_err">
+                                <li>Revise sistema de separación de billetes:</li>
+                                <li>Estado rueda stripper</li>
+                                <li>Funcionalidad del clutch</li>
+                                <li>Tensión stripper del cassette</li>
+                                <li>Que la spring roller no esté tocando el eje de la rueda stripper</li>
+                                <li>Que la rueda stripper esté bien posicionada</li>
+                            </ul>
+                        </li>
+
+                        <!-- Late Doubles -->
+                        <li>
+                            <strong>Late Doubles:</strong><span id="latedoubles_FM3_val"></span>
+                            <ul id="latedoubles_FM3_err">
+                                <li>Revise sistema de separación de billetes</li>
+                                <li>Estado rueda stripper</li>
+                                <li>Funcionalidad de clutch</li>
+                                <li>Tensión stripper del cassette</li>
+                                <li>Que la spring roller no este tocando el eje de la rueda stripper</li>
+                                <li>Que la rueda stripper este bien posicionada</li>
+                            </ul>
+                        </li>
+
+                        <!-- Late Tapes -->
+                        <li>
+                            <strong>Late Tapes:</strong><span id="latetapes_FM3_val"></span>
+                            <ul id="latetapes_FM3_err">
+                                <li>Revise las métricas del double detect para confirmar algo desgaste del fork block</li>
+                            </ul>
+                        </li>
+
+                        <!-- Prox Gain -->
+                        <li>
+                            <strong>Prox Gain:</strong><span id="proxgain_FM3_val"></span>
+                            <ul id="proxgain_FM3_err">
+                                <li>Indica dificultad del Double detect para medir billetes por desgaste del fork block</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Wafe Form Distortion -->
+                        <li>
+                            <strong>Wafe Form Distortion:</strong><span id="wafeformdistortion_FM3_val"></span>
+                            <ul id="wafeformdistortion_FM3_err">
+                                <li>Indicador de la habilidad de ver bien los billetes</li>
+                                <li>Un valor fuera de rango puede indicar baja calidad de los billetes o desgaste del fork block</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Floor -->
+                        <li>
+                            <strong>Floor:</strong><span id="floor_FM3_val"></span>
+                            <ul id="floor_FM3_err">
+                                <li>Indica la estabilidad mecánica del módulo</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Prox Calibration Value -->
+                        <li><strong>Prox Calibration Value:</strong><span id="proxcalibrationvalue_FM3_val"></span>
+                            <ul id="proxcalibrationvalue_FM3_err">
+                                <li>Calculo aproximado de la vida útil restante del double detect </li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Resultados FM4 -->
+                <div id="resultados_FM4">
+                    <p><b>Feed Module 4:</b></p>
+                    <ul>
+                         <!-- Miss Picks -->
+                        <li>
+                            <strong>Miss picks:</strong><span id="misspicks_FM4_val"></span>
+                            <ul id="misspicks_FM4_err">
+                                <li>Revise el sistema de extracción de billetes:</li>
+                                <li>Estado del Feed Shaft.</li>
+                                <li>Push Plate del Cassette.</li>
+                                <li>Estado de takeway (interno).</li>
+                            </ul>
+                        </li>
+
+                        <!-- Come Alongs -->
+                        <li>
+                            <strong>Come Alongs:</strong><span id="comealongs_FM4_val"></span></li>
+                            <ul id="comealongs_FM4_err">
+                                <li>Revise el estado de los cauchos del Feed Shaft, que no estén pegados</li>
+                            </ul>
+                        </li>
+
+                        <!-- Short -->
+                        <li>
+                            <strong>Short:</strong><span id="short_FM4_val"></span>
+                            <ul id="short_FM4_err">
+                                <li>Diagnosticar cambio de módulo con métricas actualizadas</li>
+                                <li>Problema electrónico del Double Detect</li>
+                                <li>Cambio de Módulo</li>
+                            </ul>
+                        </li>
+
+                        <!-- singles -->
+                        <li>
+                            <strong>Singles:</strong><span id="singles_FM4_val"></span>
+                            <ul id="singles_FM4_err">
+                                <li>Billetes Perfectos</li>
+                                <li>Referencia para los calculos</li>
+                            </ul>
+                        </li>
+
+                        <!-- Longs -->
+                        <li>
+                            <strong>Longs:</strong><span id="longs_FM4_val"></span>
+                            <ul id="longs_FM4_err">
+                                <li>Revise el sistema de arrastre de billetes</li>
+                                <li>Estado y tensión de las spring rollers</li>
+                                <li>Estado de rueda Take-away</li>
+                                <li>Tensión take-away del cassette</li>
+                                <li>Estado caucho rueda central del Feed Shaft</li>
+                            </ul>
+                        </li>
+
+                        <!-- Early Doubles -->
+                        <li><strong>Early Doubles:</strong><span id="earlydoubles_FM4_val"></span>
+                            <ul id="earlydoubles_FM4_err">
+                                <li>Revise sistema de separación de billetes:</li>
+                                <li>Estado rueda stripper</li>
+                                <li>Funcionalidad del clutch</li>
+                                <li>Tensión stripper del cassette</li>
+                                <li>Que la spring roller no esté tocando el eje de la rueda stripper</li>
+                                <li>Que la rueda stripper esté bien posicionada</li>
+                            </ul>
+                        </li>
+
+                        <!-- Late Doubles -->
+                        <li>
+                            <strong>Late Doubles:</strong><span id="latedoubles_FM4_val"></span>
+                            <ul id="latedoubles_FM4_err">
+                                <li>Revise sistema de separación de billetes</li>
+                                <li>Estado rueda stripper</li>
+                                <li>Funcionalidad de clutch</li>
+                                <li>Tensión stripper del cassette</li>
+                                <li>Que la spring roller no este tocando el eje de la rueda stripper</li>
+                                <li>Que la rueda stripper este bien posicionada</li>
+                            </ul>
+                        </li>
+
+                        <!-- Late Tapes -->
+                        <li>
+                            <strong>Late Tapes:</strong><span id="latetapes_FM4_val"></span>
+                            <ul id="latetapes_FM4_err">
+                                <li>Revise las métricas del double detect para confirmar algo desgaste del fork block</li>
+                            </ul>
+                        </li>
+
+                        <!-- Prox Gain -->
+                        <li>
+                            <strong>Prox Gain:</strong><span id="proxgain_FM4_val"></span>
+                            <ul id="proxgain_FM4_err">
+                                <li>Indica dificultad del Double detect para medir billetes por desgaste del fork block</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Wafe Form Distortion -->
+                        <li>
+                            <strong>Wafe Form Distortion:</strong><span id="wafeformdistortion_FM4_val"></span>
+                            <ul id="wafeformdistortion_FM4_err">
+                                <li>Indicador de la habilidad de ver bien los billetes</li>
+                                <li>Un valor fuera de rango puede indicar baja calidad de los billetes o desgaste del fork block</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Floor -->
+                        <li>
+                            <strong>Floor:</strong><span id="floor_FM4_val"></span>
+                            <ul id="floor_FM4_err">
+                                <li>Indica la estabilidad mecánica del módulo</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Prox Calibration Value -->
+                        <li><strong>Prox Calibration Value:</strong><span id="proxcalibrationvalue_FM4_val"></span>
+                            <ul id="proxcalibrationvalue_FM4_err">
+                                <li>Calculo aproximado de la vida útil restante del double detect </li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Resultados FM5 -->
+                <div id="resultados_FM5">
+                    <p><b>Feed Module 5:</b></p>
+                    <ul>
+                         <!-- Miss Picks -->
+                        <li>
+                            <strong>Miss picks:</strong><span id="misspicks_FM5_val"></span>
+                            <ul id="misspicks_FM5_err">
+                                <li>Revise el sistema de extracción de billetes:</li>
+                                <li>Estado del Feed Shaft.</li>
+                                <li>Push Plate del Cassette.</li>
+                                <li>Estado de takeway (interno).</li>
+                            </ul>
+                        </li>
+
+                        <!-- Come Alongs -->
+                        <li>
+                            <strong>Come Alongs:</strong><span id="comealongs_FM5_val"></span></li>
+                            <ul id="comealongs_FM5_err">
+                                <li>Revise el estado de los cauchos del Feed Shaft, que no estén pegados</li>
+                            </ul>
+                        </li>
+
+                        <!-- Short -->
+                        <li>
+                            <strong>Short:</strong><span id="short_FM5_val"></span>
+                            <ul id="short_FM5_err">
+                                <li>Diagnosticar cambio de módulo con métricas actualizadas</li>
+                                <li>Problema electrónico del Double Detect</li>
+                                <li>Cambio de Módulo</li>
+                            </ul>
+                        </li>
+
+                        <!-- singles -->
+                        <li>
+                            <strong>Singles:</strong><span id="singles_FM5_val"></span>
+                            <ul id="singles_FM5_err">
+                                <li>Billetes Perfectos</li>
+                                <li>Referencia para los calculos</li>
+                            </ul>
+                        </li>
+
+                        <!-- Longs -->
+                        <li>
+                            <strong>Longs:</strong><span id="longs_FM5_val"></span>
+                            <ul id="longs_FM5_err">
+                                <li>Revise el sistema de arrastre de billetes</li>
+                                <li>Estado y tensión de las spring rollers</li>
+                                <li>Estado de rueda Take-away</li>
+                                <li>Tensión take-away del cassette</li>
+                                <li>Estado caucho rueda central del Feed Shaft</li>
+                            </ul>
+                        </li>
+
+                        <!-- Early Doubles -->
+                        <li><strong>Early Doubles:</strong><span id="earlydoubles_FM5_val"></span>
+                            <ul id="earlydoubles_FM5_err">
+                                <li>Revise sistema de separación de billetes:</li>
+                                <li>Estado rueda stripper</li>
+                                <li>Funcionalidad del clutch</li>
+                                <li>Tensión stripper del cassette</li>
+                                <li>Que la spring roller no esté tocando el eje de la rueda stripper</li>
+                                <li>Que la rueda stripper esté bien posicionada</li>
+                            </ul>
+                        </li>
+
+                        <!-- Late Doubles -->
+                        <li>
+                            <strong>Late Doubles:</strong><span id="latedoubles_FM5_val"></span>
+                            <ul id="latedoubles_FM5_err">
+                                <li>Revise sistema de separación de billetes</li>
+                                <li>Estado rueda stripper</li>
+                                <li>Funcionalidad de clutch</li>
+                                <li>Tensión stripper del cassette</li>
+                                <li>Que la spring roller no este tocando el eje de la rueda stripper</li>
+                                <li>Que la rueda stripper este bien posicionada</li>
+                            </ul>
+                        </li>
+
+                        <!-- Late Tapes -->
+                        <li>
+                            <strong>Late Tapes:</strong><span id="latetapes_FM5_val"></span>
+                            <ul id="latetapes_FM5_err">
+                                <li>Revise las métricas del double detect para confirmar algo desgaste del fork block</li>
+                            </ul>
+                        </li>
+
+                        <!-- Prox Gain -->
+                        <li>
+                            <strong>Prox Gain:</strong><span id="proxgain_FM5_val"></span>
+                            <ul id="proxgain_FM5_err">
+                                <li>Indica dificultad del Double detect para medir billetes por desgaste del fork block</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Wafe Form Distortion -->
+                        <li>
+                            <strong>Wafe Form Distortion:</strong><span id="wafeformdistortion_FM5_val"></span>
+                            <ul id="wafeformdistortion_FM5_err">
+                                <li>Indicador de la habilidad de ver bien los billetes</li>
+                                <li>Un valor fuera de rango puede indicar baja calidad de los billetes o desgaste del fork block</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Floor -->
+                        <li>
+                            <strong>Floor:</strong><span id="floor_FM5_val"></span>
+                            <ul id="floor_FM5_err">
+                                <li>Indica la estabilidad mecánica del módulo</li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+
+                        <!-- Prox Calibration Value -->
+                        <li><strong>Prox Calibration Value:</strong><span id="proxcalibrationvalue_FM5_val"></span>
+                            <ul id="proxcalibrationvalue_FM5_err">
+                                <li>Calculo aproximado de la vida útil restante del double detect </li>
+                                <li>Si fuera de rango, cambio de módulo </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script>
+
+         //Valida Feed Module 1
+            $("#btn-FM1").click(function(event){
+
+                $("#resultados_FM1").show();
+                $("#resultados_FM2").hide();
+                $("#resultados_FM3").hide();
+                $("#resultados_FM4").hide();
+                $("#resultados_FM5").hide();
+                $.mobile.changePage($("#resultados"),{transition:"none"});
+
+            });
+
+            //Valida Feed Module 2
+            $("#btn-FM2").click(function(event){
+                $("#resultados_FM1").hide();
+                $("#resultados_FM2").show();
+                $("#resultados_FM3").hide();
+                $("#resultados_FM4").hide();
+                $("#resultados_FM5").hide();
+                $.mobile.changePage($("#resultados"),{transition:"none"});
+            });
+
+            //Valida Feed Module 3
+            $("#btn-FM3").click(function(event){
+                $("#resultados_FM1").hide();
+                $("#resultados_FM2").hide();
+                $("#resultados_FM3").show();
+                $("#resultados_FM4").hide();
+                $("#resultados_FM5").hide();
+                $.mobile.changePage($("#resultados"),{transition:"none"});
+            });
+
+            //Valida Feed Module 4
+            $("#btn-FM4").click(function(event){
+                $("#resultados_FM1").hide();
+                $("#resultados_FM2").hide();
+                $("#resultados_FM3").hide();
+                $("#resultados_FM4").show();
+                $("#resultados_FM5").hide();
+                $.mobile.changePage($("#resultados"),{transition:"none"});
+            });
+
+            //Valida Feed Module 5
+            $("#btn-FM5").click(function(event){
+                $("#resultados_FM1").hide();
+                $("#resultados_FM2").hide();
+                $("#resultados_FM3").hide();
+                $("#resultados_FM4").hide();
+                $("#resultados_FM5").show();
+                $.mobile.changePage($("#resultados"),{transition:"none"});
+            });
+
+            //Valida Todos los Feed Module
+            $("#btn-FM").click(function(event){
+                $("#resultados_FM1").show();
+                $("#resultados_FM2").show();
+                $("#resultados_FM3").show();
+                $("#resultados_FM4").show();
+                $("#resultados_FM5").show();
+                $.mobile.changePage($("#resultados"),{transition:"none"});
+            });
+
+
+            $('#resultados').on('pageshow', function(event){
+                valida_FM();
+            });
+
+
+
+            function valida_FM()
+            {
+                //PRIMER FEED
+                //Valida Miss Picks
+                res_misspicks_FM1 = ( $("#misspicks_FM1").val() / $("#singles_FM1").val() ) * 100;
+                res_misspicks_FM1 = res_misspicks_FM1.toFixed(2);
+                $("#misspicks_FM1_val").html( " " + res_misspicks_FM1 + "%");
+                if (res_misspicks_FM1 < 0.50)
+                {
+                    $("#misspicks_FM1_err").hide();
+                }
+                else
+                {
+                    $("#misspicks_FM1_err").show();
+                }
+
+                //Valida Come Alongs
+                res_comealongs_FM1 = ( $("#comealongs_FM1").val() / $("#singles_FM1").val() ) * 100;
+                res_comealongs_FM1 = res_comealongs_FM1.toFixed(2);
+                $("#comealongs_FM1_val").html( " " + res_comealongs_FM1 + "%");
+                if (res_comealongs_FM1 < 0.05)
+                {
+                    $("#comealongs_FM1_err").hide();
+                }
+                else
+                {
+                    $("#comealongs_FM1_err").show();
+                }
+
+                //Valida Short
+                res_short_FM1 = ( $("#short_FM1").val() / $("#singles_FM1").val() ) * 100;
+                res_short_FM1 = res_short_FM1.toFixed(3);
+                $("#short_FM1_val").html( " " + res_short_FM1 + "%");
+                if (res_short_FM1 < 0.050)
+                {
+                    $("#short_FM1_err").hide();
+                }
+                else
+                {
+                    $("#short_FM1_err").show();
+                }
+
+                //Valida Singles
+                res_singles_FM1 = ( $("#singles_FM1").val() / $("#singles_FM1").val() ) * 100;
+                res_singles_FM1 = res_singles_FM1.toFixed(0);
+                $("#singles_FM1_val").html( " " + res_singles_FM1 + "%");
+                if (res_singles_FM1 != 100)
+                {
+                    $("#singles_FM1_err").hide();
+                }
+                else
+                {
+                    $("#singles_FM1_err").show();
+                }
+
+                //Valida Longs
+                res_longs_FM1 = ( $("#longs_FM1").val() / $("#singles_FM1").val() ) * 100;
+                res_longs_FM1 = res_longs_FM1.toFixed(2);
+                $("#longs_FM1_val").html( " " + res_longs_FM1 + "%");
+                if (res_longs_FM1 < 0.05)
+                {
+                    $("#longs_FM1_err").hide();
+                }
+                else
+                {
+                    $("#longs_FM1_err").show();
+                }
+
+                //Valida Early Doubles
+                res_earlydoubles_FM1 = ( $("#earlydoubles_FM1").val() / $("#singles_FM1").val() ) * 100;
+                res_earlydoubles_FM1 = res_earlydoubles_FM1.toFixed(2);
+                $("#earlydoubles_FM1_val").html( " " + res_earlydoubles_FM1 + "%");
+                if (res_earlydoubles_FM1 < 0.50)
+                {
+                    $("#earlydoubles_FM1_err").hide();
+                }
+                else
+                {
+                    $("#earlydoubles_FM1_err").show();
+                }
+
+                //Valida Late Doubles
+                res_latedoubles_FM1 = ( $("#latedoubles_FM1").val() / $("#singles_FM1").val() ) * 100;
+                res_latedoubles_FM1 = res_latedoubles_FM1.toFixed(2);
+                $("#latedoubles_FM1_val").html( " " + res_latedoubles_FM1 + "%");
+                if (res_latedoubles_FM1 < 0.03)
+                {
+                    $("#latedoubles_FM1_err").hide();
+                }
+                else
+                {
+                    $("#latedoubles_FM1_err").show();
+                }
+
+                //Valida Late Tapes
+                res_latetapes_FM1 = ( $("#latetapes_FM1").val() / $("#singles_FM1").val() ) * 100;
+                res_latetapes_FM1 = res_latetapes_FM1.toFixed(2);
+                $("#latetapes_FM1_val").html( " " + res_latetapes_FM1 + "%");
+                if (res_latetapes_FM1 < 1)
+                {
+                    $("#latetapes_FM1_err").hide();
+                }
+                else
+                {
+                    $("#latetapes_FM1_err").show();
+                }
+
+                //Valida Prox Gain
+                res_proxgain_FM1 = $("#proxgain_FM1").val();
+                $("#proxgain_FM1_val").html( " " + res_proxgain_FM1);
+                if (res_proxgain_FM1 < 77 || res_proxgain_FM1 > 120 )
+                {
+                    $("#proxgain_FM1_err").show();
+                }
+                else
+                {
+                    $("#proxgain_FM1_err").hide();
+                }
+
+                //Valida Wafe Form Distortion
+                res_wafeformdistortion_FM1 = $("#wafeformdistortion_FM1").val();
+                $("#wafeformdistortion_FM1_val").html( " " + res_wafeformdistortion_FM1);
+                if (res_wafeformdistortion_FM1 > 20)
+                {
+                    $("#wafeformdistortion_FM1_err").show();
+                }
+                else
+                {
+                    $("#wafeformdistortion_FM1_err").hide();
+                }
+
+                //Valida Floor
+                res_floor_FM1 = $("#floor_FM1").val();
+                $("#floor_FM1_val").html( " " + res_floor_FM1);
+                if (res_floor_FM1 > 5)
+                {
+                    $("#floor_FM1_err").show();
+                }
+                else
+                {
+                    $("#floor_FM1_err").hide();
+                }
+
+                //Valida Prox Calibration Value
+                res_proxcalibrationvalue_FM1 = $("#proxcalibrationvalue_FM1").val();
+                $("#proxcalibrationvalue_FM1_val").html( " " + res_proxcalibrationvalue_FM1);
+                if (res_proxcalibrationvalue_FM1 > 255)
+                {
+                    $("#proxcalibrationvalue_FM1_err").show();
+                }
+                else
+                {
+                    $("#proxcalibrationvalue_FM1_err").hide();
+                }
+
+                //SEGUNDO FEED
+                //Valida Miss Picks
+                res_misspicks_FM2 = ( $("#misspicks_FM2").val() / $("#singles_FM2").val() ) * 100;
+                res_misspicks_FM2 = res_misspicks_FM2.toFixed(2);
+                $("#misspicks_FM2_val").html( " " + res_misspicks_FM2 + "%");
+                if (res_misspicks_FM2 < 0.50)
+                {
+                    $("#misspicks_FM2_err").hide();
+                }
+                else
+                {
+                    $("#misspicks_FM2_err").show();
+                }
+
+                //Valida Come Alongs
+                res_comealongs_FM2 = ( $("#comealongs_FM2").val() / $("#singles_FM2").val() ) * 100;
+                res_comealongs_FM2 = res_comealongs_FM2.toFixed(2);
+                $("#comealongs_FM2_val").html( " " + res_comealongs_FM2 + "%");
+                if (res_comealongs_FM2 < 0.05)
+                {
+                    $("#comealongs_FM2_err").hide();
+                }
+                else
+                {
+                    $("#comealongs_FM2_err").show();
+                }
+
+                //Valida Short
+                res_short_FM2 = ( $("#short_FM2").val() / $("#singles_FM2").val() ) * 100;
+                res_short_FM2 = res_short_FM2.toFixed(3);
+                $("#short_FM2_val").html( " " + res_short_FM2 + "%");
+                if (res_short_FM2 < 0.050)
+                {
+                    $("#short_FM2_err").hide();
+                }
+                else
+                {
+                    $("#short_FM2_err").show();
+                }
+
+                //Valida Singles
+                res_singles_FM2 = ( $("#singles_FM2").val() / $("#singles_FM2").val() ) * 100;
+                res_singles_FM2 = res_singles_FM2.toFixed(0);
+                $("#singles_FM2_val").html( " " + res_singles_FM2 + "%");
+                if (res_singles_FM2 != 100)
+                {
+                    $("#singles_FM2_err").hide();
+                }
+                else
+                {
+                    $("#singles_FM2_err").show();
+                }
+
+                //Valida Longs
+                res_longs_FM2 = ( $("#longs_FM2").val() / $("#singles_FM2").val() ) * 100;
+                res_longs_FM2 = res_longs_FM2.toFixed(2);
+                $("#longs_FM2_val").html( " " + res_longs_FM2 + "%");
+                if (res_longs_FM2 < 0.05)
+                {
+                    $("#longs_FM2_err").hide();
+                }
+                else
+                {
+                    $("#longs_FM2_err").show();
+                }
+
+                //Valida Early Doubles
+                res_earlydoubles_FM2 = ( $("#earlydoubles_FM2").val() / $("#singles_FM2").val() ) * 100;
+                res_earlydoubles_FM2 = res_earlydoubles_FM2.toFixed(2);
+                $("#earlydoubles_FM2_val").html( " " + res_earlydoubles_FM2 + "%");
+                if (res_earlydoubles_FM2 < 0.50)
+                {
+                    $("#earlydoubles_FM2_err").hide();
+                }
+                else
+                {
+                    $("#earlydoubles_FM2_err").show();
+                }
+
+                //Valida Late Doubles
+                res_latedoubles_FM2 = ( $("#latedoubles_FM2").val() / $("#singles_FM2").val() ) * 100;
+                res_latedoubles_FM2 = res_latedoubles_FM2.toFixed(2);
+                $("#latedoubles_FM2_val").html( " " + res_latedoubles_FM2 + "%");
+                if (res_latedoubles_FM2 < 0.03)
+                {
+                    $("#latedoubles_FM2_err").hide();
+                }
+                else
+                {
+                    $("#latedoubles_FM2_err").show();
+                }
+
+                //Valida Late Tapes
+                res_latetapes_FM2 = ( $("#latetapes_FM2").val() / $("#singles_FM2").val() ) * 100;
+                res_latetapes_FM2 = res_latetapes_FM2.toFixed(2);
+                $("#latetapes_FM2_val").html( " " + res_latetapes_FM2 + "%");
+                if (res_latetapes_FM2 < 1)
+                {
+                    $("#latetapes_FM2_err").hide();
+                }
+                else
+                {
+                    $("#latetapes_FM2_err").show();
+                }
+
+                //Valida Prox Gain
+                res_proxgain_FM2 = $("#proxgain_FM2").val();
+                $("#proxgain_FM2_val").html( " " + res_proxgain_FM2);
+                if (res_proxgain_FM2 < 77 || res_proxgain_FM2 > 120 )
+                {
+                    $("#proxgain_FM2_err").show();
+                }
+                else
+                {
+                    $("#proxgain_FM2_err").hide();
+                }
+
+                //Valida Wafe Form Distortion
+                res_wafeformdistortion_FM2 = $("#wafeformdistortion_FM2").val();
+                $("#wafeformdistortion_FM2_val").html( " " + res_wafeformdistortion_FM2);
+                if (res_wafeformdistortion_FM2 > 20)
+                {
+                    $("#wafeformdistortion_FM2_err").show();
+                }
+                else
+                {
+                    $("#wafeformdistortion_FM2_err").hide();
+                }
+
+                //Valida Floor
+                res_floor_FM2 = $("#floor_FM2").val();
+                $("#floor_FM2_val").html( " " + res_floor_FM2);
+                if (res_floor_FM2 > 5)
+                {
+                    $("#floor_FM2_err").show();
+                }
+                else
+                {
+                    $("#floor_FM2_err").hide();
+                }
+
+                //Valida Prox Calibration Value
+                res_proxcalibrationvalue_FM2 = $("#proxcalibrationvalue_FM2").val();
+                $("#proxcalibrationvalue_FM2_val").html( " " + res_proxcalibrationvalue_FM2);
+                if (res_proxcalibrationvalue_FM2 > 255)
+                {
+                    $("#proxcalibrationvalue_FM2_err").show();
+                }
+                else
+                {
+                    $("#proxcalibrationvalue_FM2_err").hide();
+                }
+
+                //TERCER FEED
+                //Valida Miss Picks
+                res_misspicks_FM3 = ( $("#misspicks_FM3").val() / $("#singles_FM3").val() ) * 100;
+                res_misspicks_FM3 = res_misspicks_FM3.toFixed(2);
+                $("#misspicks_FM3_val").html( " " + res_misspicks_FM3 + "%");
+                if (res_misspicks_FM3 < 0.50)
+                {
+                    $("#misspicks_FM3_err").hide();
+                }
+                else
+                {
+                    $("#misspicks_FM3_err").show();
+                }
+
+                //Valida Come Alongs
+                res_comealongs_FM3 = ( $("#comealongs_FM3").val() / $("#singles_FM3").val() ) * 100;
+                res_comealongs_FM3 = res_comealongs_FM3.toFixed(2);
+                $("#comealongs_FM3_val").html( " " + res_comealongs_FM3 + "%");
+                if (res_comealongs_FM3 < 0.05)
+                {
+                    $("#comealongs_FM3_err").hide();
+                }
+                else
+                {
+                    $("#comealongs_FM3_err").show();
+                }
+
+                //Valida Short
+                res_short_FM3 = ( $("#short_FM3").val() / $("#singles_FM3").val() ) * 100;
+                res_short_FM3 = res_short_FM3.toFixed(3);
+                $("#short_FM3_val").html( " " + res_short_FM3 + "%");
+                if (res_short_FM3 < 0.050)
+                {
+                    $("#short_FM3_err").hide();
+                }
+                else
+                {
+                    $("#short_FM3_err").show();
+                }
+
+                //Valida Singles
+                res_singles_FM3 = ( $("#singles_FM3").val() / $("#singles_FM3").val() ) * 100;
+                res_singles_FM3 = res_singles_FM3.toFixed(0);
+                $("#singles_FM3_val").html( " " + res_singles_FM3 + "%");
+                if (res_singles_FM3 != 100)
+                {
+                    $("#singles_FM3_err").hide();
+                }
+                else
+                {
+                    $("#singles_FM3_err").show();
+                }
+
+                //Valida Longs
+                res_longs_FM3 = ( $("#longs_FM3").val() / $("#singles_FM3").val() ) * 100;
+                res_longs_FM3 = res_longs_FM3.toFixed(2);
+                $("#longs_FM3_val").html( " " + res_longs_FM3 + "%");
+                if (res_longs_FM3 < 0.05)
+                {
+                    $("#longs_FM3_err").hide();
+                }
+                else
+                {
+                    $("#longs_FM3_err").show();
+                }
+
+                //Valida Early Doubles
+                res_earlydoubles_FM3 = ( $("#earlydoubles_FM3").val() / $("#singles_FM3").val() ) * 100;
+                res_earlydoubles_FM3 = res_earlydoubles_FM3.toFixed(2);
+                $("#earlydoubles_FM3_val").html( " " + res_earlydoubles_FM3 + "%");
+                if (res_earlydoubles_FM3 < 0.50)
+                {
+                    $("#earlydoubles_FM3_err").hide();
+                }
+                else
+                {
+                    $("#earlydoubles_FM3_err").show();
+                }
+
+                //Valida Late Doubles
+                res_latedoubles_FM3 = ( $("#latedoubles_FM3").val() / $("#singles_FM3").val() ) * 100;
+                res_latedoubles_FM3 = res_latedoubles_FM3.toFixed(2);
+                $("#latedoubles_FM3_val").html( " " + res_latedoubles_FM3 + "%");
+                if (res_latedoubles_FM3 < 0.03)
+                {
+                    $("#latedoubles_FM3_err").hide();
+                }
+                else
+                {
+                    $("#latedoubles_FM3_err").show();
+                }
+
+                //Valida Late Tapes
+                res_latetapes_FM3 = ( $("#latetapes_FM3").val() / $("#singles_FM3").val() ) * 100;
+                res_latetapes_FM3 = res_latetapes_FM3.toFixed(2);
+                $("#latetapes_FM3_val").html( " " + res_latetapes_FM3 + "%");
+                if (res_latetapes_FM3 < 1)
+                {
+                    $("#latetapes_FM3_err").hide();
+                }
+                else
+                {
+                    $("#latetapes_FM3_err").show();
+                }
+
+                //Valida Prox Gain
+                res_proxgain_FM3 = $("#proxgain_FM3").val();
+                $("#proxgain_FM3_val").html( " " + res_proxgain_FM3);
+                if (res_proxgain_FM3 < 77 || res_proxgain_FM3 > 120 )
+                {
+                    $("#proxgain_FM3_err").show();
+                }
+                else
+                {
+                    $("#proxgain_FM3_err").hide();
+                }
+
+                //Valida Wafe Form Distortion
+                res_wafeformdistortion_FM3 = $("#wafeformdistortion_FM3").val();
+                $("#wafeformdistortion_FM3_val").html( " " + res_wafeformdistortion_FM3);
+                if (res_wafeformdistortion_FM3 > 20)
+                {
+                    $("#wafeformdistortion_FM3_err").show();
+                }
+                else
+                {
+                    $("#wafeformdistortion_FM3_err").hide();
+                }
+
+                //Valida Floor
+                res_floor_FM3 = $("#floor_FM3").val();
+                $("#floor_FM3_val").html( " " + res_floor_FM3);
+                if (res_floor_FM3 > 5)
+                {
+                    $("#floor_FM3_err").show();
+                }
+                else
+                {
+                    $("#floor_FM3_err").hide();
+                }
+
+                //Valida Floor
+                res_proxcalibrationvalue_FM3 = $("#proxcalibrationvalue_FM3").val();
+                $("#proxcalibrationvalue_FM3_val").html( " " + res_proxcalibrationvalue_FM3);
+                if (res_proxcalibrationvalue_FM3 > 255)
+                {
+                    $("#proxcalibrationvalue_FM3_err").show();
+                }
+                else
+                {
+                    $("#proxcalibrationvalue_FM3_err").hide();
+                }
+
+                //CUARTO FEED
+                //Valida Miss Picks
+                res_misspicks_FM4 = ( $("#misspicks_FM4").val() / $("#singles_FM4").val() ) * 100;
+                res_misspicks_FM4 = res_misspicks_FM4.toFixed(2);
+                $("#misspicks_FM4_val").html( " " + res_misspicks_FM4 + "%");
+                if (res_misspicks_FM4 < 0.50)
+                {
+                    $("#misspicks_FM4_err").hide();
+                }
+                else
+                {
+                    $("#misspicks_FM4_err").show();
+                }
+
+                //Valida Come Alongs
+                res_comealongs_FM4 = ( $("#comealongs_FM4").val() / $("#singles_FM4").val() ) * 100;
+                res_comealongs_FM4 = res_comealongs_FM4.toFixed(2);
+                $("#comealongs_FM4_val").html( " " + res_comealongs_FM4 + "%");
+                if (res_comealongs_FM4 < 0.05)
+                {
+                    $("#comealongs_FM4_err").hide();
+                }
+                else
+                {
+                    $("#comealongs_FM4_err").show();
+                }
+
+                //Valida Short
+                res_short_FM4 = ( $("#short_FM4").val() / $("#singles_FM4").val() ) * 100;
+                res_short_FM4 = res_short_FM4.toFixed(3);
+                $("#short_FM4_val").html( " " + res_short_FM4 + "%");
+                if (res_short_FM4 < 0.050)
+                {
+                    $("#short_FM4_err").hide();
+                }
+                else
+                {
+                    $("#short_FM4_err").show();
+                }
+
+                //Valida Singles
+                res_singles_FM4 = ( $("#singles_FM4").val() / $("#singles_FM4").val() ) * 100;
+                res_singles_FM4 = res_singles_FM4.toFixed(0);
+                $("#singles_FM4_val").html( " " + res_singles_FM4 + "%");
+                if (res_singles_FM4 != 100)
+                {
+                    $("#singles_FM4_err").hide();
+                }
+                else
+                {
+                    $("#singles_FM4_err").show();
+                }
+
+                //Valida Longs
+                res_longs_FM4 = ( $("#longs_FM4").val() / $("#singles_FM4").val() ) * 100;
+                res_longs_FM4 = res_longs_FM4.toFixed(2);
+                $("#longs_FM4_val").html( " " + res_longs_FM4 + "%");
+                if (res_longs_FM4 < 0.05)
+                {
+                    $("#longs_FM4_err").hide();
+                }
+                else
+                {
+                    $("#longs_FM4_err").show();
+                }
+
+                //Valida Early Doubles
+                res_earlydoubles_FM4 = ( $("#earlydoubles_FM4").val() / $("#singles_FM4").val() ) * 100;
+                res_earlydoubles_FM4 = res_earlydoubles_FM4.toFixed(2);
+                $("#earlydoubles_FM4_val").html( " " + res_earlydoubles_FM4 + "%");
+                if (res_earlydoubles_FM4 < 0.50)
+                {
+                    $("#earlydoubles_FM4_err").hide();
+                }
+                else
+                {
+                    $("#earlydoubles_FM4_err").show();
+                }
+
+                //Valida Late Doubles
+                res_latedoubles_FM4 = ( $("#latedoubles_FM4").val() / $("#singles_FM4").val() ) * 100;
+                res_latedoubles_FM4 = res_latedoubles_FM4.toFixed(2);
+                $("#latedoubles_FM4_val").html( " " + res_latedoubles_FM4 + "%");
+                if (res_latedoubles_FM4 < 0.03)
+                {
+                    $("#latedoubles_FM4_err").hide();
+                }
+                else
+                {
+                    $("#latedoubles_FM4_err").show();
+                }
+
+                //Valida Late Tapes
+                res_latetapes_FM4 = ( $("#latetapes_FM4").val() / $("#singles_FM4").val() ) * 100;
+                res_latetapes_FM4 = res_latetapes_FM4.toFixed(2);
+                $("#latetapes_FM4_val").html( " " + res_latetapes_FM4 + "%");
+                if (res_latetapes_FM4 < 1)
+                {
+                    $("#latetapes_FM4_err").hide();
+                }
+                else
+                {
+                    $("#latetapes_FM4_err").show();
+                }
+
+                //Valida Prox Gain
+                res_proxgain_FM4 = $("#proxgain_FM4").val();
+                $("#proxgain_FM4_val").html( " " + res_proxgain_FM4);
+                if (res_proxgain_FM4 < 77 || res_proxgain_FM4 > 120 )
+                {
+                    $("#proxgain_FM4_err").show();
+                }
+                else
+                {
+                    $("#proxgain_FM4_err").hide();
+                }
+
+                //Valida Wafe Form Distortion
+                res_wafeformdistortion_FM4 = $("#wafeformdistortion_FM4").val();
+                $("#wafeformdistortion_FM4_val").html( " " + res_wafeformdistortion_FM4);
+                if (res_wafeformdistortion_FM4 > 20)
+                {
+                    $("#wafeformdistortion_FM4_err").show();
+                }
+                else
+                {
+                    $("#wafeformdistortion_FM4_err").hide();
+                }
+
+                //Valida Floor
+                res_floor_FM4 = $("#floor_FM4").val();
+                $("#floor_FM4_val").html( " " + res_floor_FM4);
+                if (res_floor_FM4 > 5)
+                {
+                    $("#floor_FM4_err").show();
+                }
+                else
+                {
+                    $("#floor_FM4_err").hide();
+                }
+
+                //Valida Floor
+                res_proxcalibrationvalue_FM4 = $("#proxcalibrationvalue_FM4").val();
+                $("#proxcalibrationvalue_FM4_val").html( " " + res_proxcalibrationvalue_FM4);
+                if (res_proxcalibrationvalue_FM4 > 255)
+                {
+                    $("#proxcalibrationvalue_FM4_err").show();
+                }
+                else
+                {
+                    $("#proxcalibrationvalue_FM4_err").hide();
+                }
+
+                //QUINTO FEED
+                //Valida Miss Picks
+                res_misspicks_FM5 = ( $("#misspicks_FM5").val() / $("#singles_FM5").val() ) * 100;
+                res_misspicks_FM5 = res_misspicks_FM5.toFixed(2);
+                $("#misspicks_FM5_val").html( " " + res_misspicks_FM5 + "%");
+                if (res_misspicks_FM5 < 0.50)
+                {
+                    $("#misspicks_FM5_err").hide();
+                }
+                else
+                {
+                    $("#misspicks_FM5_err").show();
+                }
+
+                //Valida Come Alongs
+                res_comealongs_FM5 = ( $("#comealongs_FM5").val() / $("#singles_FM5").val() ) * 100;
+                res_comealongs_FM5 = res_comealongs_FM5.toFixed(2);
+                $("#comealongs_FM5_val").html( " " + res_comealongs_FM5 + "%");
+                if (res_comealongs_FM5 < 0.05)
+                {
+                    $("#comealongs_FM5_err").hide();
+                }
+                else
+                {
+                    $("#comealongs_FM5_err").show();
+                }
+
+                //Valida Short
+                res_short_FM5 = ( $("#short_FM5").val() / $("#singles_FM5").val() ) * 100;
+                res_short_FM5 = res_short_FM5.toFixed(3);
+                $("#short_FM5_val").html( " " + res_short_FM5 + "%");
+                if (res_short_FM5 < 0.050)
+                {
+                    $("#short_FM5_err").hide();
+                }
+                else
+                {
+                    $("#short_FM5_err").show();
+                }
+
+                //Valida Singles
+                res_singles_FM5 = ( $("#singles_FM5").val() / $("#singles_FM5").val() ) * 100;
+                res_singles_FM5 = res_singles_FM5.toFixed(0);
+                $("#singles_FM5_val").html( " " + res_singles_FM5 + "%");
+                if (res_singles_FM5 != 100)
+                {
+                    $("#singles_FM5_err").hide();
+                }
+                else
+                {
+                    $("#singles_FM5_err").show();
+                }
+
+                //Valida Longs
+                res_longs_FM5 = ( $("#longs_FM5").val() / $("#singles_FM5").val() ) * 100;
+                res_longs_FM5 = res_longs_FM5.toFixed(2);
+                $("#longs_FM5_val").html( " " + res_longs_FM5 + "%");
+                if (res_longs_FM5 < 0.05)
+                {
+                    $("#longs_FM5_err").hide();
+                }
+                else
+                {
+                    $("#longs_FM5_err").show();
+                }
+
+                //Valida Early Doubles
+                res_earlydoubles_FM5 = ( $("#earlydoubles_FM5").val() / $("#singles_FM5").val() ) * 100;
+                res_earlydoubles_FM5 = res_earlydoubles_FM5.toFixed(2);
+                $("#earlydoubles_FM5_val").html( " " + res_earlydoubles_FM5 + "%");
+                if (res_earlydoubles_FM5 < 0.50)
+                {
+                    $("#earlydoubles_FM5_err").hide();
+                }
+                else
+                {
+                    $("#earlydoubles_FM5_err").show();
+                }
+
+                //Valida Late Doubles
+                res_latedoubles_FM5 = ( $("#latedoubles_FM5").val() / $("#singles_FM5").val() ) * 100;
+                res_latedoubles_FM5 = res_latedoubles_FM5.toFixed(2);
+                $("#latedoubles_FM5_val").html( " " + res_latedoubles_FM5 + "%");
+                if (res_latedoubles_FM5 < 0.03)
+                {
+                    $("#latedoubles_FM5_err").hide();
+                }
+                else
+                {
+                    $("#latedoubles_FM5_err").show();
+                }
+
+                //Valida Late Tapes
+                res_latetapes_FM5 = ( $("#latetapes_FM5").val() / $("#singles_FM5").val() ) * 100;
+                res_latetapes_FM5 = res_latetapes_FM5.toFixed(2);
+                $("#latetapes_FM5_val").html( " " + res_latetapes_FM5 + "%");
+                if (res_latetapes_FM5 < 1)
+                {
+                    $("#latetapes_FM5_err").hide();
+                }
+                else
+                {
+                    $("#latetapes_FM5_err").show();
+                }
+
+                //Valida Prox Gain
+                res_proxgain_FM5 = $("#proxgain_FM5").val();
+                $("#proxgain_FM5_val").html( " " + res_proxgain_FM5);
+                if (res_proxgain_FM5 < 77 || res_proxgain_FM5 > 120 )
+                {
+                    $("#proxgain_FM5_err").show();
+                }
+                else
+                {
+                    $("#proxgain_FM5_err").hide();
+                }
+
+                //Valida Wafe Form Distortion
+                res_wafeformdistortion_FM5 = $("#wafeformdistortion_FM5").val();
+                $("#wafeformdistortion_FM5_val").html( " " + res_wafeformdistortion_FM5);
+                if (res_wafeformdistortion_FM5 > 20)
+                {
+                    $("#wafeformdistortion_FM5_err").show();
+                }
+                else
+                {
+                    $("#wafeformdistortion_FM5_err").hide();
+                }
+
+                //Valida Floor
+                res_floor_FM5 = $("#floor_FM5").val();
+                $("#floor_FM5_val").html( " " + res_floor_FM5);
+                if (res_floor_FM5 > 5)
+                {
+                    $("#floor_FM5_err").show();
+                }
+                else
+                {
+                    $("#floor_FM5_err").hide();
+                }
+
+                //Valida Floor
+                res_proxcalibrationvalue_FM5 = $("#proxcalibrationvalue_FM5").val();
+                $("#proxcalibrationvalue_FM5_val").html( " " + res_proxcalibrationvalue_FM5);
+                if (res_proxcalibrationvalue_FM5 > 255)
+                {
+                    $("#proxcalibrationvalue_FM5_err").show();
+                }
+                else
+                {
+                    $("#proxcalibrationvalue_FM5_err").hide();
+                }
+            }
+        </script>
+    </body>
+</html>

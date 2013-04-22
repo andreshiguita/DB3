@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/my.css" />
+        
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+        <script>
+            //Define el tipo de entorno de publicación:
+            //d = Desarrollo
+            //b = Pruebas
+            //a = Producción
+            var entorno = "a"
+            switch(entorno)
+            {
+            case "d":
+                //Dirección Proxy Desarrollo
+                url = "http://localhost/db3/app/?callback=?";
+                url1 = "http://localhost/db3/app/";
+            break;
+            case "b":
+                //Dirección Pública Proxy Pruebas
+                url = "http://190.242.36.105/app/?callback=?";
+                url1 = "http://190.242.36.105/app/";
+            break;
+            case "a":
+                //Dirección üblica Proxy Producción
+                url1 = "http://www.dbdmobilesar.com/app/";
+                url = "http://www.dbdmobilesar.com/app/?callback=?";
+            break;
+            default:
+                //Dirección Proxy Desarrollo
+                url = "http://localhost/db3/app/?callback=?";
+                url1 = "http://localhost/db3/app/";
+            }
+        </script>
+    </head>
+    <body>
+        <h5>Prueba</h5>
+        <p>de selección de entorno</p>
+    </body>
+</html>

@@ -56,7 +56,7 @@ var movil = "movil=3183592508", url1, url, map;
 //d = Desarrollo
 //b = Pruebas
 //a = Producción
-var entorno = "a";
+var entorno = "b";
 switch(entorno)
 {
 case "d":
@@ -1500,6 +1500,7 @@ function preview(formData){
         dataModules;
     dataModules = sessionStorage.getItem('modulo');
     dataModules = JSON.parse(dataModules);
+    
     $.getJSON(url, formData3, function(json) {
         if(!json.hasOwnProperty('success')){
             formData2[1]+=" "+(formData2[2].split("="))[1];
@@ -1511,19 +1512,33 @@ function preview(formData){
                 '<p><strong>Cliente: </strong><br>'+json.CLIENTE+'</p>'
             );
 
-            /*
-            jQuery.each(json.MODULOS.MODULO, function(indice, modulo) {
-                $page.append(
-                    '<p><strong>Módulo: </strong>'+modulo.ALIAS+'<br>'+
-                    '<strong>Problema </strong>'+modulo.DESCRIPCIONCODIGOPROBLEMA+'<br>'+
-                    '<strong>Causal: </strong>'+modulo.DESCRIPCIONCAUSAL+'<br>'+
-                    '<strong>Cierre: </strong>'+modulo.DESCRIPCIONCIERRE+'<br>'+
-                    '<strong>Reparación </strong>'+modulo.DESCRIPCIONCODIGOREPARACION+'<br>'+
-                    '<strong>Comentario </strong>'+modulo.COMENTARIOSREPARACION+'<br>'+
-                    '<strong>Tiempo Reparación: </strong>'+modulo.TIEMPOREPARACION+'</p>'
-                );
+            jQuery.each(json.MODULOS, function(key, val) {
+                if ( val.ALIAS != null ){
+                    $page.append(
+                        '<p><strong>Módulo: </strong>'+val.ALIAS+'<br>'+
+                        '<strong>Problema </strong>'+val.DESCRIPCIONCODIGOPROBLEMA+'<br>'+
+                        '<strong>Causal: </strong>'+val.DESCRIPCIONCAUSAL+'<br>'+
+                        '<strong>Cierre: </strong>'+val.DESCRIPCIONCIERRE+'<br>'+
+                        '<strong>Reparación </strong>'+val.DESCRIPCIONCODIGOREPARACION+'<br>'+
+                        '<strong>Comentario </strong>'+val.COMENTARIOSREPARACION+'<br>'+
+                        '<strong>Tiempo Reparación: </strong>'+val.TIEMPOREPARACION+'</p>'
+                    );
+                }
+                else
+                {
+                    jQuery.each(json.MODULOS.MODULO, function(indice, modulo) {
+                        $page.append(
+                            '<p><strong>Módulo: </strong>'+modulo.ALIAS+'<br>'+
+                            '<strong>Problema </strong>'+modulo.DESCRIPCIONCODIGOPROBLEMA+'<br>'+
+                            '<strong>Causal: </strong>'+modulo.DESCRIPCIONCAUSAL+'<br>'+
+                            '<strong>Cierre: </strong>'+modulo.DESCRIPCIONCIERRE+'<br>'+
+                            '<strong>Reparación </strong>'+modulo.DESCRIPCIONCODIGOREPARACION+'<br>'+
+                            '<strong>Comentario </strong>'+modulo.COMENTARIOSREPARACION+'<br>'+
+                            '<strong>Tiempo Reparación: </strong>'+modulo.TIEMPOREPARACION+'</p>'
+                        );
+                    });
+                }
             });
-            */
 
 
             correo= '';

@@ -2,8 +2,8 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id = "com.diebold.DocBase"
-    version = "1.1.1a">
-    <name>DocBase v1.1.1a</name>
+    version = "1.1.2b">
+    <name>DocBase v1.1.2b</name>
 
     <description>
         DocBase 3 - Movilidad
